@@ -53,7 +53,13 @@ class ModuleInitializer
         $model = new EdicionModel($this->database);
         return new EdicionController($model,$this->renderer);
     }
-
+   public function createNoticiaController()
+    {
+        include_once("model/NoticiaModel.php");
+        include_once("controller/NoticiaController.php");
+        $model = new NoticiaModel($this->database);
+        return new NoticiaController($model,$this->renderer);
+    }
     public function createDefaultController()
     {
         return $this->createUsuarioController();
