@@ -111,8 +111,10 @@ class UsuarioController
                 foreach($data["user"] as $producto => $detalles){
                     if($detalles["id_rol"]==2){
                         echo $this->renderer->render("view/vistaAdmin.php",$sesion);
-                    }else{
+                    }elseif($detalles["id_rol"]==1){
                         echo $this->renderer->render( "view/registrado.php",$sesion );
+                    }else{
+                        echo $this->renderer->render( "view/internoConte.php",$sesion );
                     }
                 }
 
@@ -148,4 +150,8 @@ class UsuarioController
         echo $this->renderer->render( "view/presentacionesView.php", $data);
     }
 
+    //probably temporal
+    public function contenidista(){
+        echo $this->renderer->render( "view/internoConte.php");
+    }
 }

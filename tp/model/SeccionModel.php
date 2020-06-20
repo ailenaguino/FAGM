@@ -14,9 +14,12 @@ class SeccionModel
     }
 
     public function insertar($data){
-        $username=$data["usuario"];
         $nombre=$data["nombre"];
-        return $this->connexion->query("INSERT INTO seccion VALUES('','$nombre',false)");
+        return $this->connexion->query("INSERT INTO seccion (nombre, estado) VALUES('$nombre',false)");
+    }
+
+    public function buscarNombreSeccion($nombre){
+        return $this->connexion->query("SELECT * FROM seccion where nombre like '$nombre'");
     }
     
 }
