@@ -27,4 +27,13 @@ class NoticiaModel
         '','$video','$link','$ubicacion','$contenido','$subtitulo',
         '$titulo','$id_seccion','$id_usuario',false)");
     }
+    public function obtenerNoticia($id){
+        return $this->connexion->query("SELECT * FROM noticia WHERE id = $id");
+    }
+    public function cambiarEstado($id,$estado){
+        return $this->connexion->query("UPDATE noticia SET estado= $estado WHERE id=$id");
+    }
+    public function eliminar($id){
+        return $this->connexion->query("DELETE FROM noticia WHERE id=$id");
+    }
 }
