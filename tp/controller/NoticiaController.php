@@ -47,12 +47,15 @@ class NoticiaController
             }
         }
 
-       $this->model->insertar($data);
-       $data["id"]=$this->model->ultimoId();
+       $bol=$this->model->insertar($data);
 
-       $mensaje["mensaje"] = "Edición agregada correctamente";
+        if($bol!=false){
+            $data["id"]=$this->model->ultimoId();
 
-        echo $this->renderer->render("view/noticiaPreview.php", $data);
+            echo $this->renderer->render("view/noticiaPreview.php", $data);
+        }else{
+            echo "error";
+        }
     }
 
     public function guardarImagen(){
