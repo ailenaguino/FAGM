@@ -9,11 +9,10 @@
         <p>Ubicación: {{ubicacion}}</p>
     {{/id}}
 
-    <form method="post" action="noticia/guardarImagen" enctype="multipart/form-data">
+    <form method="POST" action="/noticia/guardarImagen" enctype="multipart/form-data">
         <div class="input-group mb-3">
             <div class="custom-file">
-                <input type="file" name="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                <label class="custom-file-label" for="inputGroupFile01">Elegir fotos</label>
+                <input type="file" class="form-control" id="file" name="file">
                 {{#id}}
                 <input type="hidden" name="id" value="{{id}}">
                 {{/id}}
@@ -23,6 +22,4 @@
     </form>
 
 </div>
-
-
 {{>footer}}
