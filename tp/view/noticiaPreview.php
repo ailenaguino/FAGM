@@ -2,20 +2,24 @@
 
 <div class="container my-5">
     {{#id}}
-        <h2>{{titulo}}</h2>
-        <h1>{{id}}</h1>
-        <h4>{{subtitulo}}</h4>
+        <h2 class="display-2">{{titulo}}</h2>
+        <h3>{{subtitulo}}</h3>
         <p>{{contenido}}</p>
         <a href="{{link}}">{{link}}</a>
-        <span>{{ubicacion}}</span>
+        <p>Ubicación: {{ubicacion}}</p>
     {{/id}}
 
     <form method="post" action="noticia/guardarImagen" enctype="multipart/form-data">
-        <input type="file" name="file">
-        {{#id}}
-        <input type="hidden" name="id" value="{{id}}">
-        {{/id}}
-        <button>cargar imagen</button>
+        <div class="input-group mb-3">
+            <div class="custom-file">
+                <input type="file" name="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01">Elegir fotos</label>
+                {{#id}}
+                <input type="hidden" name="id" value="{{id}}">
+                {{/id}}
+            </div>
+        </div>
+        <button class="btn btn-info">cargar imagen</button>
     </form>
 
 </div>

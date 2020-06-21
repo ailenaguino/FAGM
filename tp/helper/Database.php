@@ -14,7 +14,9 @@ class Database{
         $resultAsAssocArray=mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $resultAsAssocArray;
     }
-
+    public function queryInsert($sql){
+        return mysqli_query($this->connexion, $sql);
+    }
     public function __destruct(){
         mysqli_close($this->connexion);
     }

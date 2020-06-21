@@ -43,8 +43,11 @@ class NoticiaModel
         $id_seccion=$data["id_seccion"];
         $id_usuario=$data["id_usuario"];
 
-        return $this->connexion->query("INSERT INTO noticia VALUES(
+        return $this->connexion->queryInsert("INSERT INTO noticia VALUES(
         '','$video','$link','$ubicacion','$contenido','$subtitulo',
         '$titulo','$id_seccion','$id_usuario',false)");
+
+
+
     }
 }

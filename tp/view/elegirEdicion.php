@@ -1,16 +1,16 @@
 {{>header}}
 
 <div class="container my-5">
-    <h2>Elegir edicion para la noticia</h2>
+    <h2>Elegir edición para la noticia</h2>
     <form method="POST" enctype="multipart/form-data" action="/noticia/mostrarSecciones">
 
-        <select class="my-5" name="edicion">
+        <select class="form-control my-3" name="edicion">
             {{#sesion}}
-            <option value="{{id}}">{{nombre}} | Numero: {{numero}} | {{id}}</option>
+            <option value="{{id}}">{{nombre}} | Numero: {{numero}} </option>
             {{/sesion}}
         </select>
-
-        <button>Confirmar edicion</button>
+        <button class="btn btn-outline-info my-3">Confirmar edicion</button>
+        <a href="/noticia/index" class="btn btn-outline-danger my-3 ml-3">Volver</a>
     </form>
 
 
