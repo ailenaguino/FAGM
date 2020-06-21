@@ -11,6 +11,18 @@ class NoticiaModel
     public function obtenerNoticias(){
         return $this->connexion->query("SELECT * FROM noticia");
     }
+    public function obtenerNoticia($id){
+        return $this->connexion->query("SELECT * FROM noticia where id = '$id'");
+    }
+    public function cambiarEstado($id,$estado){
+        return $this->connexion->queryInsert("UPDATE noticia SET estado= $estado WHERE id=$id");
+    }
+    public function eliminar($id){
+        return $this->connexion->query("DELETE FROM noticia WHERE id=$id");
+    }
+    public function obtenerFoto($id){
+        return $this->connexion->query("SELECT direccion FROM foto where id_noticia = '$id'");
+    }
     public function obtenerSecciones(){
         return $this->connexion->query("SELECT * FROM seccion");
     }
@@ -21,7 +33,7 @@ class NoticiaModel
         return $this->connexion->query("SELECT numero,edicion.nombre,edicion.id FROM edicion inner join ejemplar on '$id'= edicion.id_ejemplar group by id");
     }
     public function guardarImagen($dir,$id){
-        return $this->connexion->query("insert into foto values('','$dir','$id')");
+        return $this->connexion->queryInsert("insert into foto values('','$dir','$id')");
     }
     public function obtenerSeccionesPorEdicion($id_edicion){
         return $this->connexion->query("select e.id_seccion,s.nombre from edicion as ed inner join edicionPoseeSeccion as e
@@ -32,6 +44,9 @@ class NoticiaModel
     }
     public function ultimoId(){
         return $this->connexion->query("select max(id) as id from noticia");
+    }
+    public function ultimaFoto(){
+        return $this->connexion->query("select max(id) as id from foto");
     }
     public function insertar($data){
         $video=$data["video"];
@@ -46,8 +61,6 @@ class NoticiaModel
         return $this->connexion->queryInsert("INSERT INTO noticia VALUES(
         '','$video','$link','$ubicacion','$contenido','$subtitulo',
         '$titulo','$id_seccion','$id_usuario',false)");
-
-
 
     }
 }

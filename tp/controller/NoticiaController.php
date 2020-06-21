@@ -8,26 +8,64 @@ class NoticiaController
         $this->renderer = $renderer;
         $this->model = $model;
     }
+
     public function index(){
         $ejemplares["sesion"]=$this->model->obtenerEjemplares();
         echo $this->renderer->render("view/elegirEjemplar.php",$ejemplares);
     }
 
     public function mostrarEdiciones(){
-        $id=$_POST["ejemplar"];
-        $resultados["sesion"]=$this->model->obtenerEdiciones($id);
-        echo $this->renderer->render("view/elegirEdicion.php",$resultados);
+        if(isset($_POST['ejemplar'])){
+            $id=$_POST["ejemplar"];
+            $resultados["sesion"]=$this->model->obtenerEdiciones($id);
+            echo $this->renderer->render("view/elegirEdicion.php",$resultados);
+        }else{
+            echo $this->index();
+        }
     }
 
     public function mostrarSecciones(){
-        $id=$_POST["edicion"];
-        $resultados["sesion"]=$this->model->obtenerSeccionesPorEdicion($id);
-        echo $this->renderer->render("view/elegirSeccion.php",$resultados);
+        if(isset($_POST['edicion'])){
+            $id=$_POST["edicion"];
+            $resultados["sesion"]=$this->model->obtenerSeccionesPorEdicion($id);
+            echo $this->renderer->render("view/elegirSeccion.php",$resultados);
+        }else{
+            echo $this->index();
+        }
     }
 
-    public function crearSeccion(){
-        $data['id']=$_POST['seccion'];
-        echo $this->renderer->render("view/agregarNoticia.php",$data);
+    public function crearNoticia(){
+        if(isset($_POST['seccion'])){
+            $data['id']=$_POST['seccion'];
+            echo $this->renderer->render("view/agregarNoticia.php",$data);
+        }else{
+            echo $this->index();
+        }
+    }
+
+    public function listaDeNoticias(){
+        $data["noticias"] = $this->model->obtenerNoticias();
+        echo $this->renderer->render( "view/listaNoticias.php", $data);
+    }
+
+    public function cambiarEstado(){
+        $id=$_POST["id"];
+        $estado=$_POST["estado"];
+        if($estado==1){
+            $estado=0;
+        }else{
+            $estado=1;
+        }
+        $this->model->cambiarEstado($id,$estado);
+        $data["noticias"] = $this->model->obtenerNoticias();
+        echo $this->renderer->render( "view/listaNoticias.php", $data);
+    }
+
+    public  function eliminar(){
+        $id=$_POST["id"];
+        $this->model->eliminar($id);
+        $data["noticias"] = $this->model->obtenerNoticias();
+        echo $this->renderer->render( "view/listaNoticias.php", $data);
     }
 
     public function validar(){
@@ -57,30 +95,31 @@ class NoticiaController
             echo "error";
         }
     }
-
+    public function mostrarNoticia($id,$id_foto){
+        $data['id']=$this->model->obtenerNoticia($id);
+        $data['direccion']=$this->model->obtenerFoto($id);
+        echo $this->renderer->render("view/elegirMasFotos.php", $data);
+    }
     public function guardarImagen(){
-            $arch = $_FILES['file']['name'];
-            if (isset($arch) && $arch != "") {
-                $tipo = $_FILES['file']['type'];
-                $tamano = $_FILES['file']['size'];
-                $temp = $_FILES['file']['tmp_name'];
-                if (!(strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")) && ($tamano < 20000000)) {
-                    echo "<div><b>Error. La extensión o el tamaño de los archivos no es correcta.<br/>
-        - Se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.</b></div>";
+        $nombre_img = $_FILES['file']['name'];
+        $tmp_name=$_FILES["file"]["tmp_name"];
+        $error=$_FILES["file"]["error"];
+        if(!$error>0){
+            if(file_exists("images/" . $nombre_img)){
+                echo "El archivo con el nombre ".$nombre_img . " ya existe. ";
+            }else{
+                move_uploaded_file($tmp_name,"images/" . $nombre_img);
+                $insertar = $this->model->guardarImagen($nombre_img,$_POST['id']);
+                if($insertar){
+                    $img=$this->model->ultimaFoto();
+                    $this->mostrarNoticia($_POST['id'],$img);
+                }else{
+                    echo "Ha fallado la subida, reintente nuevamente.";
                 }
-                else {
-                    if (move_uploaded_file($temp, 'images/'.$arch)) {
-                        $this->model->guardarImagen('images/$arch',$_POST['id']);
-                        echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
 
-                        echo "<p><img src='images/$arch'></p>";
-                    }
-                    else {
-                        //Si no se ha podido subir la imagen, mostramos un mensaje de error
-                        echo '<div><b>Ocurrió algún error al subir el fichero. No pudo guardarse.</b></div>';
-                    }
-                }
             }
         }
+
+    }
 
 }
