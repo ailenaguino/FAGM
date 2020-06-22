@@ -125,7 +125,23 @@ class UsuarioController
                 echo $this->renderer->render( "view/loginUsuario.php");
             }
         }else{
-            echo $this->renderer->render( "view/loginUsuario.php");
+
+            $name= $_SESSION['name'];
+            $pass= $_SESSION['pass'];
+            $data["user"]=$this->model->logear($name,$pass);
+            $sesion["sesion"]=$_SESSION;
+
+            foreach($data["user"] as $producto => $detalles){
+                if($detalles["id_rol"]==2){
+                    echo $this->renderer->render("view/vistaAdmin.php",$sesion);
+                }elseif($detalles["id_rol"]==1){
+                    echo $this->renderer->render( "view/registrado.php",$sesion );
+                }elseif($detalles["id_rol"]==3){
+                    echo $this->renderer->render( "view/internoConte.php",$sesion );
+                }else{
+                    echo $this->renderer->render( "view/loginUsuario.php");
+                }
+            }
         }
     }
 

@@ -1,9 +1,9 @@
 {{> headerLogeado}}
 
-    <div class="container">
-        <a class="btn btn-info" href="/usuario/registroDelAdmin">Registrar usuarios</a>
-        <a class="btn btn-info" href="/categoria/agregar">Agregar nueva categoria</a>
-        <a class="btn btn-info" href="/noticia/listaDeNoticias">Administrar noticias</a>
+    <div class="container mt-5 ">
+        <a  class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="/usuario/registroDelAdmin">Registrar usuarios</a>
+        <a  class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="/categoria/agregar">Agregar nueva categoria</a>
+        <a  class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="/noticia/listaDeNoticias">Administrar noticias</a>
     </div>
 
 {{> footer}}

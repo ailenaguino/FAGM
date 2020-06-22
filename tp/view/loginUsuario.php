@@ -17,7 +17,6 @@
 
         <div class="col clearfix">
             <input type="submit" value="Iniciar Sesión" class="btn btn-info float-right">
-            <input type="reset" value="Cancelar" class="btn btn-danger float-right mr-3">
         </div>
 
         <h6>No tengo cuenta, quiero <a href="/usuario/registro">registrarme</a></h6>
