@@ -1,4 +1,4 @@
-{{>header}}
+{{> headerLogeado}}
 
 <div class="container my-5">
     <h2>Elegir ejemplar para la noticia</h2>
@@ -10,7 +10,7 @@
         </select>
 
         <button class="btn btn-outline-info my-3">Confirmar ejemplar</button>
-        <a href="/noticia/index" class="btn btn-outline-danger my-3 ml-3">Volver</a>
+        <a href="/usuario/contenidista" class="btn btn-outline-danger my-3 ml-3">Volver</a>
     </form>
 
 

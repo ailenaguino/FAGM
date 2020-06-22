@@ -1,4 +1,4 @@
-{{> header}}
+{{> headerLogeado}}
 
 <div class="form-group">
     <table class="table table-bordered">
@@ -9,8 +9,6 @@
             <th class="text-center" scope="col">Seccion Id</th>
             <th class="text-center" scope="col">Usuario Id</th>.
             <th class="text-center" scope="col">Estado</th>
-            <th class="text-center" scope="col">Acciones</th>
-
         </tr>
         </thead>
         <tbody>
@@ -32,15 +30,10 @@
                         {{/estado}}
                     </form>
                 </td>
-                <td class="text-center">
-                    <form action="/noticia/eliminar" method="POST">
-                        <input type="hidden" name="id" value="{{id}}" >
-                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                    </form>
-                </td>
             </tr>
         {{/noticias}}
         </tbody>
     </table>
+    <a href="/usuario/login" class="btn btn-outline-danger my-3 ml-3">Volver</a>
 </div>
 {{> footer}}

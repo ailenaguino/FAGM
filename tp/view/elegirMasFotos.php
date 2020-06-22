@@ -1,4 +1,4 @@
-{{>header}}
+{{> headerLogeado}}
 
 <div class="container my-5">
     {{#id}}
