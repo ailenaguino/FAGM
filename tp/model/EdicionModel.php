@@ -13,6 +13,10 @@ class EdicionModel
         return $this->connexion->query("SELECT * FROM edicion");
     }
 
+    public function obtenerEdicionesDeEjemplar($id){
+        return $this->connexion->query("SELECT numero,edicion.nombre,edicion.id FROM edicion inner join ejemplar on '$id'= edicion.id_ejemplar group by id");
+    }
+
     public function obtenerEjemplares(){
         return $this->connexion->query("SELECT * FROM ejemplar");
     }

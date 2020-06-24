@@ -21,5 +21,12 @@ class SeccionModel
     public function buscarNombreSeccion($nombre){
         return $this->connexion->query("SELECT * FROM seccion where nombre like '$nombre'");
     }
+    public function obtenerSeccionesPorEdicion($id_edicion){
+        return $this->connexion->query("select e.id_seccion,s.nombre from edicion as ed inner join edicionPoseeSeccion as e
+        on ed.id = e.id_edicion 
+        inner join seccion as s
+        on s.id = e.id_seccion
+        where ed.id='$id_edicion'");
+    }
     
 }
