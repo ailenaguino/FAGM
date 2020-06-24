@@ -12,8 +12,9 @@ class EdicionController
     }
 
     public function index(){
-        $ejemplares["ejemplares"]=$this->model->obtenerEjemplares();
-        echo $this->renderer->render("view/agregarEdicion.php", $ejemplares);
+        $data["ejemplares"]=$this->model->obtenerEjemplares();
+        $data["secciones"]=$this->model->obtenerSecciones();
+        echo $this->renderer->render("view/agregarEdicion.php", $data);
     }
 
 
@@ -22,22 +23,35 @@ class EdicionController
         $data["nombre"] = ucfirst($_POST["nombre"]);
         $data["numero"] = $_POST["numero"];
         $data["id_ejemplar"] = $_POST["ejemplar"];
+        $array = $_POST["seccion"];
 
         $resultado = $this->validarRepeticiones($data["nombre"], $data["numero"], $data["id_ejemplar"]);
 
         if($resultado==true) {
             $this->model->insertar($data);
+            $result = $this->model->traerIdDeEdicion($data["nombre"], $data["numero"], $data["id_ejemplar"]);
+            $data2=0;
 
-            $mensaje["mensaje"] = "Edición agregada correctamente";
-        }else{
-            $mensaje["mensaje"] = "Edición repetida";
-        }
+            foreach ($result as $a){
+                foreach ($a as $b){
+                    $data2=$b;
+                }
+            }
+                        for($i=0; $i<count($array); $i++) {
+                            $this->model->insertarRelacion($data2, $array[$i]);
+                        }
 
-        echo $this->renderer->render("view/agregarEdicion.php", $mensaje);
+                        $mensaje["mensaje"] = "Edición agregada correctamente";
+
+                    }else{
+                        $mensaje["mensaje"] = "Edición repetida";
+                    }
+
+                    echo $this->renderer->render("view/agregarEdicion.php", $mensaje);
     }
 
     public function validarRepeticiones($nombre, $numero, $ejemplar){
-        $resultado = $this->model->buscarSeccionEspecífica(ucfirst($nombre), $numero, $ejemplar);
+        $resultado = $this->model->buscarEdicionEspecífica(ucfirst($nombre), $numero, $ejemplar);
 
         if($resultado!=null) {
             return false;

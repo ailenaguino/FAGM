@@ -11,21 +11,29 @@
 
         <div class="form-group">
             <label>Numero:</label>
-            <input type="number" name="numero" id="" placeholder="6" class="form-control" required>
+            <input type="number" name="numero" min="1" placeholder="6" class="form-control" required>
         </div>
 
         <label>Ejemplar:</label>
-        <select class="form-control mb-5" name="ejemplar">
+        <select class="form-control mb-3" name="ejemplar"> required
             {{#ejemplares}}
             <option value="{{id}}">{{nombre}}</option>
             {{/ejemplares}}
         </select>
 
+        <label>Secciones:</label>
+            {{#secciones}}
+        <div>
+            <input type="checkbox" name="seccion[]" value="{{id}}">  {{nombre}}
+        </div>
+            {{/secciones}}
+
+
         {{#mensaje}}
         <h5 class="text-danger">{{mensaje}}</h5>
         {{/mensaje}}
 
-        <div class="col clearfix">
+        <div class="col clearfix mt-5">
             <input type="submit" value="Aceptar" class="btn btn-info float-right">
             <a class="btn btn-info" href="/usuario/contenidista">Atrás</a>
         </div>

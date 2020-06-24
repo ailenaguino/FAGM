@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6a16a8e2-56d4-4855-b50b-9ba45d9af593" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tp/controller/CategoriaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tp/view/agregarCategoria.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp/ModuleInitializer.php" beforeDir="false" afterPath="$PROJECT_DIR$/tp/ModuleInitializer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp/model/CategoriaModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/tp/model/CategoriaModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp/view/vistaAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/tp/view/vistaAdmin.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1d35CPF15lPX9oTBKZrH6LQBVkV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../htdocs" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6a16a8e2-56d4-4855-b50b-9ba45d9af593" name="Default Changelist" comment="" />
+      <created>1591640807642</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591640807642</updated>
+      <workItem from="1591640814316" duration="4871000" />
+      <workItem from="1592354215217" duration="589000" />
+      <workItem from="1592623589006" duration="36000" />
+      <workItem from="1592623798665" duration="3611000" />
+      <workItem from="1592672969860" duration="4005000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="580" y="184" key="FileChooserDialogImpl" timestamp="1592678232466">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="580" y="184" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1592678232466" />
+    <state x="598" y="152" key="NewPhpClassDialog" timestamp="1592675609488">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="598" y="152" key="NewPhpClassDialog/0.0.1600.860@0.0.1600.860" timestamp="1592675609487" />
+    <state x="635" y="352" key="NewPhpFileDialog" timestamp="1592676541866">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="635" y="352" key="NewPhpFileDialog/0.0.1600.860@0.0.1600.860" timestamp="1592676541866" />
+  </component>
+</project>
