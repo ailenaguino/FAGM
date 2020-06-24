@@ -9,14 +9,16 @@ class FotoModel
         $this->connexion = $database;
     }
 
-    public function obtenerEjemplares(){
-        return $this->connexion->query("SELECT * FROM foto");
+    public function obtenerFoto($id){
+        return $this->connexion->query("SELECT direccion FROM foto where id_noticia = '$id'");
     }
 
-    public function insertar($data){
-        $direccion=$data["direccion"];
-        $id_noticia=$data["id_noticia"];
-
-        return $this->connexion->query("INSERT INTO foto VALUES('','$direccion','$id_noticia')");
+    public function guardarImagen($dir,$id){
+        return $this->connexion->queryInsert("insert into foto values('','$dir','$id')");
     }
+
+    public function ultimaFoto(){
+        return $this->connexion->query("select max(id) as id from foto");
+    }
+
 }

@@ -20,34 +20,11 @@ class NoticiaModel
     public function eliminar($id){
         return $this->connexion->query("DELETE FROM noticia WHERE id=$id");
     }
-    public function obtenerFoto($id){
-        return $this->connexion->query("SELECT direccion FROM foto where id_noticia = '$id'");
-    }
-    public function obtenerSecciones(){
-        return $this->connexion->query("SELECT * FROM seccion");
-    }
-    public function obtenerEjemplares(){
-        return $this->connexion->query("SELECT * FROM ejemplar");
-    }
-    public function obtenerEdiciones($id){
-        return $this->connexion->query("SELECT numero,edicion.nombre,edicion.id FROM edicion inner join ejemplar on '$id'= edicion.id_ejemplar group by id");
-    }
-    public function guardarImagen($dir,$id){
-        return $this->connexion->queryInsert("insert into foto values('','$dir','$id')");
-    }
-    public function obtenerSeccionesPorEdicion($id_edicion){
-        return $this->connexion->query("select e.id_seccion,s.nombre from edicion as ed inner join edicionPoseeSeccion as e
-        on ed.id = e.id_edicion 
-        inner join seccion as s
-        on s.id = e.id_seccion
-        where ed.id='$id_edicion'");
-    }
+
     public function ultimoId(){
         return $this->connexion->query("select max(id) as id from noticia");
     }
-    public function ultimaFoto(){
-        return $this->connexion->query("select max(id) as id from foto");
-    }
+
     public function insertar($data){
         $video=$data["video"];
         $link=$data["link"];

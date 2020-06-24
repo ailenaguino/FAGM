@@ -4,20 +4,28 @@ class NoticiaController
 {
     private $renderer;
     private $model;
-    public function __construct($model, $renderer){
+    private $modelEjemplar;
+    private $modelEdicion;
+    private $modelSeccion;
+    private $modelFoto;
+    public function __construct($model, $renderer,$ejemplar,$edicion,$seccion,$foto){
         $this->renderer = $renderer;
         $this->model = $model;
+        $this->modelEjemplar=$ejemplar;
+        $this->modelEdicion=$edicion;
+        $this->modelSeccion=$seccion;
+        $this->modelFoto=$foto;
     }
 
     public function index(){
-        $ejemplares["sesion"]=$this->model->obtenerEjemplares();
+        $ejemplares["sesion"]=$this->modelEjemplar->obtenerEjemplares();
         echo $this->renderer->render("view/elegirEjemplar.php",$ejemplares);
     }
 
     public function mostrarEdiciones(){
         if(isset($_POST['ejemplar'])){
             $id=$_POST["ejemplar"];
-            $resultados["sesion"]=$this->model->obtenerEdiciones($id);
+            $resultados["sesion"]=$this->modelEdicion->obtenerEdicionesDeEjemplar($id);
             echo $this->renderer->render("view/elegirEdicion.php",$resultados);
         }else{
             echo $this->index();
@@ -27,7 +35,7 @@ class NoticiaController
     public function mostrarSecciones(){
         if(isset($_POST['edicion'])){
             $id=$_POST["edicion"];
-            $resultados["sesion"]=$this->model->obtenerSeccionesPorEdicion($id);
+            $resultados["sesion"]=$this->modelSeccion->obtenerSeccionesPorEdicion($id);
             echo $this->renderer->render("view/elegirSeccion.php",$resultados);
         }else{
             echo $this->index();
@@ -95,9 +103,9 @@ class NoticiaController
             echo "error";
         }
     }
-    public function mostrarNoticia($id,$id_foto){
+    public function mostrarNoticia($id){
         $data['id']=$this->model->obtenerNoticia($id);
-        $data['direccion']=$this->model->obtenerFoto($id);
+        $data['direccion']=$this->modelFoto->obtenerFoto($id);
         echo $this->renderer->render("view/elegirMasFotos.php", $data);
     }
     public function guardarImagen(){
@@ -109,10 +117,10 @@ class NoticiaController
                 echo "El archivo con el nombre ".$nombre_img . " ya existe. ";
             }else{
                 move_uploaded_file($tmp_name,"images/" . $nombre_img);
-                $insertar = $this->model->guardarImagen($nombre_img,$_POST['id']);
+                $insertar = $this->modelFoto->guardarImagen($nombre_img,$_POST['id']);
                 if($insertar){
-                    $img=$this->model->ultimaFoto();
-                    $this->mostrarNoticia($_POST['id'],$img);
+                    $img=$this->modelFoto->ultimaFoto();
+                    $this->mostrarNoticia($_POST['id']);
                 }else{
                     echo "Ha fallado la subida, reintente nuevamente.";
                 }
