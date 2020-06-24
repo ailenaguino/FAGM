@@ -53,12 +53,26 @@ class ModuleInitializer
         $model = new EdicionModel($this->database);
         return new EdicionController($model,$this->renderer);
     }
+    public function createFotoController(){
+        include_once("model/FotoModel.php");
+        include_once("controller/FotoController.php");
+        $model = new FotoModel($this->database);
+        return new FotoController($model,$this->renderer);
+    }
 
     public function createNoticiaController(){
         include_once("model/NoticiaModel.php");
+        include_once("model/EdicionModel.php");
+        include_once("model/EjemplarModel.php");
+        include_once("model/SeccionModel.php");
+        include_once("model/FotoModel.php");
         include_once("controller/NoticiaController.php");
         $model = new NoticiaModel($this->database);
-        return new NoticiaController($model,$this->renderer);
+        $ejemplar = new EjemplarModel($this->database);
+        $edicion = new EdicionModel($this->database);
+        $seccion = new SeccionModel($this->database);
+        $foto=new FotoModel($this->database);
+        return new NoticiaController($model,$this->renderer,$ejemplar,$edicion,$seccion,$foto);
     }
 
 
