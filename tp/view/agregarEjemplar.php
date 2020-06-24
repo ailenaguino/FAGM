@@ -9,6 +9,11 @@
             <input type="text" name="nombre" id="" placeholder="Olé" class="form-control" required>
         </div>
 
+        <div class="form-group">
+            <label>Precio de suscripción:</label>
+            <input type="number" name="precio" min="0" placeholder="54.99" class="form-control"  step="0.01" required>
+        </div>
+
         <label>Categoría:</label>
         <select class="form-control mb-5" name="categoria">
             {{#categorias}}

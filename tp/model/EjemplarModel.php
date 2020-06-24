@@ -13,16 +13,13 @@ class EjemplarModel
         return $this->connexion->query("SELECT * FROM ejemplar");
     }
 
-    public function obtenerCategorias(){
-        return $this->connexion->query("SELECT * FROM categoria");
-    }
-
     public function insertar($data){
         $nombre=$data["nombre"];
         $id_categoria=$data["id_categoria"];
+        $precio=$data["precio"];
 
-        return $this->connexion->query("INSERT INTO ejemplar (nombre, id_categoria, estado) VALUES('$nombre',
-        '$id_categoria',false)");
+        return $this->connexion->queryInsert("INSERT INTO ejemplar (nombre, id_categoria, estado, precio) VALUES('$nombre',
+        '$id_categoria',false, $precio)");
     }
 
     public function buscarEjemplarDeCategoria($nombre, $categoria){

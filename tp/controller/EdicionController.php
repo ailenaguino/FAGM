@@ -5,49 +5,61 @@ class EdicionController
 {
     private $renderer;
     private $model;
+    private $modelEjemplar;
+    private $modelSeccion;
 
-    public function __construct($model, $renderer){
+    public function __construct($model, $renderer, $ejemplar, $seccion){
         $this->renderer = $renderer;
         $this->model = $model;
+        $this->modelEjemplar = $ejemplar;
+        $this->modelSeccion = $seccion;
     }
 
     public function index(){
-        $data["ejemplares"]=$this->model->obtenerEjemplares();
-        $data["secciones"]=$this->model->obtenerSecciones();
+        $data["ejemplares"]=$this->modelEjemplar->obtenerEjemplares();
+        $data["secciones"]=$this->modelSeccion->obtenerSecciones();
         echo $this->renderer->render("view/agregarEdicion.php", $data);
     }
 
 
     public function validar(){
-        $data = array();
-        $data["nombre"] = ucfirst($_POST["nombre"]);
-        $data["numero"] = $_POST["numero"];
-        $data["id_ejemplar"] = $_POST["ejemplar"];
-        $array = $_POST["seccion"];
+        if(isset($_POST["seccion"])){
+            $data = array();
+            $data["nombre"] = ucfirst($_POST["nombre"]);
+            $data["numero"] = $_POST["numero"];
+            $data["id_ejemplar"] = $_POST["ejemplar"];
+            $data["precio"] = $_POST["precio"];
+            $arraySeccion = $_POST["seccion"];
 
-        $resultado = $this->validarRepeticiones($data["nombre"], $data["numero"], $data["id_ejemplar"]);
+            $resultado = $this->validarRepeticiones($data["nombre"], $data["numero"], $data["id_ejemplar"]);
 
-        if($resultado==true) {
-            $this->model->insertar($data);
-            $result = $this->model->traerIdDeEdicion($data["nombre"], $data["numero"], $data["id_ejemplar"]);
-            $data2=0;
+            if($resultado==true) {
+                $this->model->insertar($data);
+                $result = $this->model->traerIdDeEdicion();
+                $IdEdicion=0;
 
-            foreach ($result as $a){
-                foreach ($a as $b){
-                    $data2=$b;
-                }
-            }
-                        for($i=0; $i<count($array); $i++) {
-                            $this->model->insertarRelacion($data2, $array[$i]);
-                        }
-
-                        $mensaje["mensaje"] = "Edición agregada correctamente";
-
-                    }else{
-                        $mensaje["mensaje"] = "Edición repetida";
+                foreach ($result as $a){
+                    foreach ($a as $b){
+                        $IdEdicion=$b;
                     }
+                }
+                for($i=0; $i<count($arraySeccion); $i++) {
+                    $this->model->insertarRelacion($IdEdicion, $arraySeccion[$i]);
+                }
 
-                    echo $this->renderer->render("view/agregarEdicion.php", $mensaje);
+                $mensaje= "Edición agregada correctamente";
+
+            }else{
+                $mensaje= "Edición repetida";
+            }
+        }else {
+            $mensaje = "Tilde al menos una sección";
+        }
+
+                $data["ejemplares"]=$this->modelEjemplar->obtenerEjemplares();
+                $data["secciones"]=$this->modelSeccion->obtenerSecciones();
+                $data["mensaje"]=$mensaje;
+                echo $this->renderer->render("view/agregarEdicion.php", $data);
     }
 
     public function validarRepeticiones($nombre, $numero, $ejemplar){

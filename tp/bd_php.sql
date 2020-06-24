@@ -37,6 +37,7 @@ create table ejemplar(
     nombre varchar(25),
     id_categoria integer not null,
     estado boolean,
+    precio double,
     primary key(id),
     foreign key(id_categoria) references categoria(id)
 );
@@ -57,6 +58,7 @@ create table edicion(
     numero integer not null,
     id_ejemplar integer not null,
     estado boolean,
+    precio double,
     primary key(id),
     foreign key(id_ejemplar) references ejemplar(id)
 );

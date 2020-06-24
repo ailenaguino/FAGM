@@ -5,14 +5,16 @@ class EjemplarController
 {
     private $renderer;
     private $model;
+    private $modelCategoria;
 
-    public function __construct($model, $renderer){
+    public function __construct($model, $renderer, $categoria){
         $this->renderer = $renderer;
         $this->model = $model;
+        $this->modelCategoria = $categoria;
     }
 
     public function index(){
-        $categorias["categorias"]=$this->model->obtenerCategorias();
+        $categorias["categorias"]=$this->modelCategoria->obtenerCategorias();
         echo $this->renderer->render("view/agregarEjemplar.php", $categorias);
     }
 
@@ -21,6 +23,7 @@ class EjemplarController
         $data = array();
         $data["nombre"] = ucfirst($_POST["nombre"]);
         $data["id_categoria"] = $_POST["categoria"];
+        $data["precio"] = $_POST["precio"];
 
         $resultado = $this->validarNombre($data["nombre"], $data["id_categoria"]);
 
@@ -32,7 +35,9 @@ class EjemplarController
             $mensaje["mensaje"] = "El ejemplar ya existe";
         }
 
-        echo $this->renderer->render("view/agregarEjemplar.php", $mensaje);
+        $data["categorias"]=$this->modelCategoria->obtenerCategorias();
+        $data["mensaje"]=$mensaje;
+        echo $this->renderer->render("view/agregarEjemplar.php", $data);
     }
 
     public function validarNombre($nombre, $categoria){

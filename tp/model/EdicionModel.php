@@ -17,20 +17,13 @@ class EdicionModel
         return $this->connexion->query("SELECT numero,edicion.nombre,edicion.id FROM edicion inner join ejemplar on '$id'= edicion.id_ejemplar group by id");
     }
 
-    public function obtenerEjemplares(){
-        return $this->connexion->query("SELECT * FROM ejemplar");
-    }
-
-    public function obtenerSecciones(){
-        return $this->connexion->query("SELECT * FROM seccion");
-    }
-
     public function insertar($data){
         $nombre=$data["nombre"];
         $numero=$data["numero"];
         $id_ejemplar=$data["id_ejemplar"];
-        $this->connexion->queryInsert("INSERT INTO edicion (nombre, numero, id_ejemplar, estado) VALUES('$nombre',
-        '$numero','$id_ejemplar',false)");
+        $precio=$data["precio"];
+        $this->connexion->queryInsert("INSERT INTO edicion (nombre, numero, id_ejemplar, estado, precio) VALUES('$nombre',
+        '$numero','$id_ejemplar',false, $precio)");
     }
 
     public function buscarEdicionEspecífica($nombre, $numero, $ejemplar){
@@ -38,11 +31,11 @@ class EdicionModel
         and id_ejemplar = '$ejemplar' ");
     }
 
-    public function traerIdDeEdicion($nombre, $numero, $ejemplar){
+    public function traerIdDeEdicion(){
         return $this->connexion->query("SELECT max(id) FROM edicion ");
     }
 
-    public function insertarRelacion($data, $num){
-        $this->connexion->queryInsert("INSERT INTO edicionPoseeSeccion VALUES ('$num', '$data')");
+    public function insertarRelacion($edicion, $seccion){
+        $this->connexion->queryInsert("INSERT INTO edicionPoseeSeccion VALUES ('$seccion', '$edicion')");
     }
 }

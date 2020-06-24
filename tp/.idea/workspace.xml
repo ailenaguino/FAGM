@@ -34,11 +34,11 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\view" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\view\partial" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\view" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -63,6 +63,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="176" y="270" key="#SQL_Dialects" timestamp="1593036433729">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="176" y="270" key="#SQL_Dialects/0.0.1600.860@0.0.1600.860" timestamp="1593036433729" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591655093933">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

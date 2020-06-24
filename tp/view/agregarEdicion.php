@@ -14,6 +14,11 @@
             <input type="number" name="numero" min="1" placeholder="6" class="form-control" required>
         </div>
 
+        <div class="form-group">
+            <label>Precio:</label>
+            <input type="number" name="precio" min="0" placeholder="54.99" class="form-control"  step="0.01" required>
+        </div>
+
         <label>Ejemplar:</label>
         <select class="form-control mb-3" name="ejemplar"> required
             {{#ejemplares}}

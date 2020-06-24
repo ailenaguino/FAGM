@@ -42,16 +42,22 @@ class ModuleInitializer
 
     public function createEjemplarController(){
         include_once("model/EjemplarModel.php");
+        include_once("model/CategoriaModel.php");
         include_once("controller/EjemplarController.php");
         $model = new EjemplarModel($this->database);
-        return new EjemplarController($model,$this->renderer);
+        $categoria = new CategoriaModel($this->database);
+        return new EjemplarController($model,$this->renderer, $categoria);
     }
 
     public function createEdicionController(){
         include_once("model/EdicionModel.php");
         include_once("controller/EdicionController.php");
+        include_once("model/EjemplarModel.php");
+        include_once("model/SeccionModel.php");
         $model = new EdicionModel($this->database);
-        return new EdicionController($model,$this->renderer);
+        $ejemplar = new EjemplarModel($this->database);
+        $seccion = new SeccionModel($this->database);
+        return new EdicionController($model,$this->renderer, $ejemplar, $seccion);
     }
     public function createFotoController(){
         include_once("model/FotoModel.php");

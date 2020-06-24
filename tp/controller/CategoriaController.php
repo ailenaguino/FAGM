@@ -12,9 +12,7 @@ class CategoriaController
     }
 
     public function index(){
-        //esto se me acaba de ocurrir pero lo pueden cambiar obvio
-        $data["categorias"] = $this->model->obtenerCategorias();
-        echo $this->renderer->render("view/mostrarCategorias.php", $data);
+        echo $this->renderer->render("view/agregarCategoria.php");
     }
 
     public function agregar(){

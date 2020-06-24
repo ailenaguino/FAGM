@@ -15,7 +15,7 @@ class SeccionModel
 
     public function insertar($data){
         $nombre=$data["nombre"];
-        return $this->connexion->query("INSERT INTO seccion (nombre, estado) VALUES('$nombre',false)");
+        return $this->connexion->queryInsert("INSERT INTO seccion (nombre, estado) VALUES('$nombre',false)");
     }
 
     public function buscarNombreSeccion($nombre){
