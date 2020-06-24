@@ -11,7 +11,13 @@ create table rol(
     primary key(id)
 );
 
-insert into usuario values('',"facu","facu","1234","19990101","facu@gmail.com",11111,"san justo",2);
+insert into usuario values('1',"facu","facu","1234","19990101","facu@gmail.com",11111,"san justo",2);
+insert into usuario values('2',"ale","ale","1234","19990101","ale@gmail.com",11111,"san justo",3);
+
+insert into categoria values('1','diario'),('2','revista');
+
+insert into noticia values('1', 'hola', 'hola.com', 'hola', 'contenido', 'subtitulo', 'titulo', '1', '2', false);
+
 create table usuario(
 	id integer not null auto_increment,
     nombre varchar(25) not null,
@@ -37,7 +43,7 @@ create table ejemplar(
     nombre varchar(25),
     id_categoria integer not null,
     estado boolean,
-    precio double,
+	precio double,
     primary key(id),
     foreign key(id_categoria) references categoria(id)
 );
@@ -58,7 +64,7 @@ create table edicion(
     numero integer not null,
     id_ejemplar integer not null,
     estado boolean,
-    precio double,
+	precio double,
     primary key(id),
     foreign key(id_ejemplar) references ejemplar(id)
 );
@@ -91,7 +97,7 @@ create table noticia(
     video varchar(255),
     link varchar(255),
     ubicacion varchar(30),
-    contenido varchar(50000),
+    contenido varchar(5000),
     subtitulo varchar(255),
     titulo varchar (255),
     id_seccion integer not null,
