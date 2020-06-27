@@ -11,6 +11,12 @@ create table rol(
     primary key(id)
 );
 
+select * from usuario where nombre like '%a%';
+
+select u.id,u.nombre,r.id,r.nombre from usuario as u
+inner join rol as r 
+on u.id_rol=r.id;
+
 insert into usuario values('1',"facu","facu","1234","19990101","facu@gmail.com",11111,"san justo",2);
 insert into usuario values('2',"ale","ale","1234","19990101","ale@gmail.com",11111,"san justo",3);
 
