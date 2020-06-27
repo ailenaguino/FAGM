@@ -15,6 +15,35 @@ class SeccionController
         echo $this->renderer->render("view/agregarSeccion.php");
     }
 
+    public function listar(){
+        $data["secciones"] = $this->model->obtenerSecciones();
+        echo $this->renderer->render("view/listarSecciones.php", $data);
+    }
+
+    public function editar(){
+        $id=$_POST["id"];
+        $data["seccion"] = $this->model->obtenerSeccionPorId($id);
+        echo $this->renderer->render("view/editarSeccion.php", $data);
+    }
+
+    public function validarEdicion(){
+        $data["id"]=$_POST["id"];
+        $data2["seccion"] = $this->model->obtenerSeccionPorId($data["id"]);
+        $data["nombre"]=ucfirst($_POST["nombre"]);
+        $nombreViejo=$_POST["nombreViejo"];
+
+        $resultado = $this->validarNombre($data["nombre"]);
+        $data2["mensaje"] = "No se puede editar la sección";
+
+        if($resultado) {
+            if(strcasecmp($data["nombre"], $nombreViejo) != 0){
+                $this->model->update($data);
+                $data2["mensaje"] = "Seccion editada correctamente";
+            }
+        }
+        echo $this->renderer->render("view/editarSeccion.php", $data2);
+    }
+
 
     public function validar(){
         $data = array();

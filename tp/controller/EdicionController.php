@@ -21,6 +21,44 @@ class EdicionController
         echo $this->renderer->render("view/agregarEdicion.php", $data);
     }
 
+    public function listar(){
+        $data["ediciones"] = $this->model->obtenerEdiciones();
+        echo $this->renderer->render("view/listarEdiciones.php", $data);
+    }
+
+    public function editar(){
+        $id=$_POST["id"];
+        $data["edicion"] = $this->model->obtenerEdicionPorId($id);
+        $data["ejemplares"]=$this->modelEjemplar->obtenerEjemplares();
+        $data["secciones"]=$this->modelSeccion->obtenerSecciones();
+        echo $this->renderer->render("view/editarEdicion.php", $data);
+    }
+
+    public function validarEdicion(){
+        $data["id"]=$_POST["id"];
+        $data["nombre"]=ucfirst($_POST["nombre"]);
+        $data["numero"] = $_POST["numero"];
+        $data["id_ejemplar"] = $_POST["ejemplar"];
+        $data["precio"] = $_POST["precio"];;
+
+        $this->model->update($data);
+
+        if(isset($_POST["seccion"])){
+        $arraySeccion = $_POST["seccion"];
+        $this->model->eliminarRelacion($data["id"]);
+
+            for($i=0; $i<count($arraySeccion); $i++) {
+                $this->model->insertarRelacion($data["id"], $arraySeccion[$i]);
+            }
+        }
+
+        $data2["mensaje"] = "Edición editada correctamente";
+
+        $data2["edicion"] = $this->model->obtenerEdicionPorId($data["id"]);
+        $data2["ejemplares"]=$this->modelEjemplar->obtenerEjemplares();
+        $data2["secciones"]=$this->modelSeccion->obtenerSecciones();
+        echo $this->renderer->render("view/editarEdicion.php", $data2);
+    }
 
     public function validar(){
         if(isset($_POST["seccion"])){
