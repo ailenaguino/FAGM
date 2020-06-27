@@ -28,9 +28,12 @@ class EjemplarController
         $resultado = $this->validarNombre($data["nombre"], $data["id_categoria"]);
 
         if($resultado==true) {
-            $this->model->insertar($data);
-
-            $mensaje["mensaje"] = "Ejemplar agregado correctamente";
+            $value=$this->model->insertar($data);
+            if($value){
+                $mensaje["mensaje"] = "Ejemplar agregado correctamente";
+            }else{
+                $mensaje["mensaje"] = "Algo salio mal";
+            }
         }else{
             $mensaje["mensaje"] = "El ejemplar ya existe";
         }

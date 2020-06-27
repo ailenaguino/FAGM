@@ -8,10 +8,10 @@
         <a href="{{link}}">{{link}}</a>
         <p>Ubicación: {{ubicacion}}</p>
             {{#direccion}}
-                <p>Direccion: images/{{direccion}}</p>
+                <img src="/images/{{direccion}}"</img>
             {{/direccion}}
     {{/id}}
-
+</div>
 <form method="POST" action="/noticia/guardarImagen" enctype="multipart/form-data">
     <h5>Agregar otra imagen</h5>
     <div class="input-group mb-3">

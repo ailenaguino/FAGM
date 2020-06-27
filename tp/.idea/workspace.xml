@@ -34,11 +34,11 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\view\partial" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\view" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\view\partial" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -56,6 +56,7 @@
       <workItem from="1592774905708" duration="6822000" />
       <workItem from="1592865316276" duration="3554000" />
       <workItem from="1592952510269" duration="3044000" />
+      <workItem from="1593266997967" duration="9483000" />
     </task>
     <servers />
   </component>
@@ -75,10 +76,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="787" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592690974932" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1592777469086">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1593268804879">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592777469086" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593268804879" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1592777635160">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
