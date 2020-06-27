@@ -50,7 +50,7 @@ class NoticiaController
             echo $this->index();
         }
     }
-
+    
     public function listaDeNoticias(){
         $data["noticias"] = $this->model->obtenerNoticias();
         echo $this->renderer->render( "view/listaNoticias.php", $data);

@@ -18,8 +18,9 @@ class EjemplarModel
         $id_categoria=$data["id_categoria"];
         $precio=$data["precio"];
 
-        return $this->connexion->queryInsert("INSERT INTO ejemplar (nombre, id_categoria, estado, precio) VALUES('$nombre',
-        '$id_categoria',false, $precio)");
+        $result= $this->connexion->queryInsert("INSERT INTO ejemplar VALUES('','$nombre',
+        '$id_categoria',false,'$precio')");
+        return $result;
     }
 
     public function buscarEjemplarDeCategoria($nombre, $categoria){
