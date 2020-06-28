@@ -56,4 +56,7 @@ class EdicionModel
     public function eliminarRelacion($edicion){
         $this->connexion->queryInsert("delete from edicionposeeseccion where id_edicion='$edicion'");
     }
+    public function cambiarEstado($id,$estado){
+        return $this->connexion->queryInsert("UPDATE edicion SET estado= $estado WHERE id=$id");
+    }
 }

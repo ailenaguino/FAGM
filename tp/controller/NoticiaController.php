@@ -51,9 +51,9 @@ class NoticiaController
         }
     }
     
-    public function listaDeNoticias(){
+    public function listaAdmin(){
         $data["noticias"] = $this->model->obtenerNoticias();
-        echo $this->renderer->render( "view/listaNoticias.php", $data);
+        echo $this->renderer->render( "view/listaNoticiasAdmin.php", $data);
     }
 
     public function cambiarEstado(){
@@ -66,14 +66,14 @@ class NoticiaController
         }
         $this->model->cambiarEstado($id,$estado);
         $data["noticias"] = $this->model->obtenerNoticias();
-        echo $this->renderer->render( "view/listaNoticias.php", $data);
+        echo $this->renderer->render( "view/listaNoticiasAdmin.php", $data);
     }
 
     public  function eliminar(){
         $id=$_POST["id"];
         $this->model->eliminar($id);
         $data["noticias"] = $this->model->obtenerNoticias();
-        echo $this->renderer->render( "view/listaNoticias.php", $data);
+        echo $this->renderer->render( "view/listaNoticiasAdmin.php", $data);
     }
 
     public function validar(){

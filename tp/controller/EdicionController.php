@@ -109,4 +109,20 @@ class EdicionController
             return true;
         }
     }
+    public function listaAdmin(){
+        $data["ediciones"] = $this->model->obtenerEdiciones();
+        echo $this->renderer->render("view/listaEdicionesAdmin.php", $data);
+    }
+    public function cambiarEstado(){
+        $id=$_POST["id"];
+        $estado=$_POST["estado"];
+        if($estado==1){
+            $estado=0;
+        }else{
+            $estado=1;
+        }
+        $this->model->cambiarEstado($id,$estado);
+        $data["ediciones"] = $this->model->obtenerEdiciones();
+        echo $this->renderer->render("view/listaEdicionesAdmin.php", $data);
+    }
 }

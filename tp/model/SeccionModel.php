@@ -38,4 +38,7 @@ class SeccionModel
         $id=$data["id"];
         return $this->connexion->queryInsert("UPDATE seccion SET nombre='$nombre' WHERE id='$id'");
     }
+    public function cambiarEstado($id,$estado){
+        return $this->connexion->queryInsert("UPDATE seccion SET estado= $estado WHERE id=$id");
+    }
 }
