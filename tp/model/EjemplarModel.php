@@ -39,5 +39,7 @@ class EjemplarModel
         return $this->connexion->queryInsert("UPDATE ejemplar SET nombre='$nombre', id_categoria='$categoria',
         precio='$precio' WHERE id='$id'");
     }
-
+    public function cambiarEstado($id,$estado){
+        return $this->connexion->queryInsert("UPDATE ejemplar SET estado= $estado WHERE id=$id");
+    }
 }

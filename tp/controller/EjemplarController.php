@@ -77,5 +77,20 @@ class EjemplarController
             return true;
         }
     }
-
+    public function listaAdmin(){
+        $data["ejemplares"] = $this->model->obtenerEjemplares();
+        echo $this->renderer->render("view/listaEjemplaresAdmin.php", $data);
+    }
+    public function cambiarEstado(){
+        $id=$_POST["id"];
+        $estado=$_POST["estado"];
+        if($estado==1){
+            $estado=0;
+        }else{
+            $estado=1;
+        }
+        $this->model->cambiarEstado($id,$estado);
+        $data["ejemplares"] = $this->model->obtenerEjemplares();
+        echo $this->renderer->render("view/listaEjemplaresAdmin.php", $data);
+    }
 }
