@@ -43,6 +43,11 @@
         <input type="text" name="video"  placeholder="Olé" class="form-control" required>
     </div>
 
+    <div class="form-group">
+        <label>Precio:</label>
+        <input type="number" name="precio" min="0" placeholder="54.99" class="form-control"  step="0.01" required>
+    </div>
+
 
     <div class="col clearfix">
         <input type="submit" value="Aceptar" class="btn btn-info float-right">

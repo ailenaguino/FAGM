@@ -4,25 +4,22 @@ use infonete;
 insert into rol values(1,"usuario");
 insert into rol values(2,"admin");
 insert into rol values(3,"contenidista");
-select * from usuario;
+insert into foto values(4,"pagar.png",5);
+select * from foto;
+
 create table rol(
 	id int not null auto_increment,
     nombre varchar(25),
     primary key(id)
 );
 
-select * from usuario where nombre like '%a%';
-
-select u.id,u.nombre,r.id,r.nombre from usuario as u
-inner join rol as r 
-on u.id_rol=r.id;
-
 insert into usuario values('1',"facu","facu","1234","19990101","facu@gmail.com",11111,"san justo",2);
 insert into usuario values('2',"ale","ale","1234","19990101","ale@gmail.com",11111,"san justo",3);
+insert into usuario values('3',"marcos","marcos","1234","19990101","marcos@gmail.com",11111,"san justo",1);
 
 insert into categoria values('1','diario'),('2','revista');
 
-insert into noticia values('1', 'hola', 'hola.com', 'hola', 'contenido', 'subtitulo', 'titulo', '1', '2', false);
+insert into noticia values('5', 'paga', 'hola.com', 'hola', 'contenido', 'subtitulo', 'pagaa', '1', '2','3', false);
 
 create table usuario(
 	id integer not null auto_increment,
@@ -37,6 +34,8 @@ create table usuario(
     primary key(id),
     foreign key(id_rol)references rol(id)
 );
+
+
 
 create table categoria(
 	id integer not null auto_increment,
@@ -108,6 +107,7 @@ create table noticia(
     titulo varchar (255),
     id_seccion integer not null,
     id_usuario integer not null,
+    precio integer not null,
     estado boolean,
     primary key(id),
     foreign key(id_seccion) references seccion(id),
