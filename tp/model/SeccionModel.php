@@ -28,17 +28,5 @@ class SeccionModel
         on s.id = e.id_seccion
         where ed.id='$id_edicion'");
     }
-
-    public function obtenerSeccionPorId($id){
-        return $this->connexion->query("select * from seccion where id = '$id'");
-    }
-
-    public function update($data){
-        $nombre=$data["nombre"];
-        $id=$data["id"];
-        return $this->connexion->queryInsert("UPDATE seccion SET nombre='$nombre' WHERE id='$id'");
-    }
-    public function cambiarEstado($id,$estado){
-        return $this->connexion->queryInsert("UPDATE seccion SET estado= $estado WHERE id=$id");
-    }
+    
 }

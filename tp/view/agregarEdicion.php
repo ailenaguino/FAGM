@@ -20,7 +20,7 @@
         </div>
 
         <label>Ejemplar:</label>
-        <select class="form-control mb-3" name="ejemplar" required>
+        <select class="form-control mb-3" name="ejemplar"> required
             {{#ejemplares}}
             <option value="{{id}}">{{nombre}}</option>
             {{/ejemplares}}
