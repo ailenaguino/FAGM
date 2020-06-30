@@ -7,6 +7,9 @@
         <p>{{contenido}}</p>
         <a href="{{link}}">{{link}}</a>
         <p>Ubicación: {{ubicacion}}</p>
+    {{#direccion}}
+        <img src="/images/{{direccion}}"</img>
+    {{/direccion}}
     {{/id}}
 
     <form method="POST" action="/noticia/guardarImagen" enctype="multipart/form-data">

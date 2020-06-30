@@ -18,8 +18,9 @@ class EjemplarModel
         $id_categoria=$data["id_categoria"];
         $precio=$data["precio"];
 
-        return $this->connexion->queryInsert("INSERT INTO ejemplar (nombre, id_categoria, estado, precio) VALUES('$nombre',
-        '$id_categoria',false, $precio)");
+        $result= $this->connexion->queryInsert("INSERT INTO ejemplar VALUES('','$nombre',
+        '$id_categoria',false,'$precio')");
+        return $result;
     }
 
     public function buscarEjemplarDeCategoria($nombre, $categoria){
@@ -31,5 +32,22 @@ class EjemplarModel
                                             inner join categoria
                                             on categoria.id = ejemplar.id_categoria
                                             where ejemplar.estado = '1'");
+    }
+
+    public function obtenerEjemplarPorId($id){
+        return $this->connexion->query("select * from ejemplar where id = '$id'");
+    }
+
+    public function update($data){
+        $nombre=$data["nombre"];
+        $categoria=$data["id_categoria"];
+        $precio=$data["precio"];
+        $id=$data["id"];
+        return $this->connexion->queryInsert("UPDATE ejemplar SET nombre='$nombre', id_categoria='$categoria',
+        precio='$precio' WHERE id='$id'");
+    }
+    public function cambiarEstado($id,$estado)
+    {
+        return $this->connexion->queryInsert("UPDATE ejemplar SET estado= $estado WHERE id=$id");
     }
 }

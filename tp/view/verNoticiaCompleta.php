@@ -9,8 +9,9 @@
         <h5>{{video}}</h5><br>
     {{/noticia}}
     {{#fotos}}
-        <h5 class="text-center">{{direccion}}</h5>
+        <img src=/images/{{direccion}} width="300" height="300"</img>
     {{/fotos}}
+    <br>
     <a href="/noticia/mostrarPortadaNoticia" class="btn btn-outline-danger my-3 ml-3">Volver</a>
 </div>
 {{> footer}}

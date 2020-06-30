@@ -173,4 +173,24 @@ class UsuarioController
     public function contenidista(){
         echo $this->renderer->render( "view/internoConte.php");
     }
+
+    public function editarRol(){
+        $data["usuarios"]=$this->model->mostrarUsuariosYRol();
+        echo $this->renderer->render("view/editarRolUsuario.php",$data);
+    }
+
+    public function buscarUsuario(){
+        $id_usuario=$_POST["id"];
+        $data["usuarios"]=$this->model->mostrarUsuariosYRol();
+        $data["state"]=true;
+        $data["encontrados"]=$this->model->mostrarUsuariosYRolPorId($id_usuario);
+        $data["roles"]=$this->model->obtenerRoles();
+        echo $this->renderer->render("view/editarRolUsuario.php",$data);
+    }
+    public function actualizarRol(){
+        $rol=$_POST['rol'];
+        $usuario=$_POST["usuario"];
+        $this->model->updateRol($rol,$usuario);
+        echo $this->editarRol();
+    }
 }

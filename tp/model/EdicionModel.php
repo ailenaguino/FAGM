@@ -45,4 +45,25 @@ class EdicionModel
     public function insertarRelacion($edicion, $seccion){
         $this->connexion->queryInsert("INSERT INTO edicionPoseeSeccion VALUES ('$seccion', '$edicion')");
     }
+
+    public function obtenerEdicionPorId($id){
+        return $this->connexion->query("select * from edicion where id = '$id'");
+    }
+
+    public function update($data){
+        $nombre=$data["nombre"];
+        $numero=$data["numero"];
+        $id_ejemplar=$data["id_ejemplar"];
+        $precio=$data["precio"];
+        $id=$data["id"];
+        return $this->connexion->queryInsert("UPDATE edicion SET nombre='$nombre', id_ejemplar='$id_ejemplar',
+        precio='$precio', numero='$numero' WHERE id='$id'");
+    }
+
+    public function eliminarRelacion($edicion){
+        $this->connexion->queryInsert("delete from edicionposeeseccion where id_edicion='$edicion'");
+    }
+    public function cambiarEstado($id,$estado){
+        return $this->connexion->queryInsert("UPDATE edicion SET estado= $estado WHERE id=$id");
+    }
 }
