@@ -9,11 +9,11 @@
     </tr>
     {{#direccion}}
 
-    <tr>
+
         <td class="text-center">{{titulo}}</td>
         <td class="text-center">{{subtitulo}}</td>
 
-            <td class="text-center">{{direccion}}</td>
+        <td class ="text-center"><img src=/images/{{direccion}} width="100" height="100"</img></td>
 
         <td class="text-center">
             <form action="/noticia/verNoticiaCompleta" method="POST">
