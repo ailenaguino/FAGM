@@ -12,44 +12,105 @@ class UsuarioController
         $this->model = $model;
         $this->pdf=$pdf;
     }
-    public function h(){
-        $result=$this->model->obtenerSuscripciones(3);
-        $da=array();
-        $nombre=$result[0]["nombre"];
-        $telefono=$result[0]["telefono"];
-
-        $this->pdf->AddPage();
-        $this->pdf->SetFont('Arial','B',12);
-
-        $this->pdf->SetFillColor(200,220,255);
-        $this->pdf->Cell(0,6,"RESUMEN DE SUSCRIPCIONES | InfoNete | $nombre",0,1,'L',true);
-        $this->pdf->ln();
-
-        $this->pdf->SetFont('Arial','',13);
-        $this->pdf->Cell(50,10,"Nombre: ".$nombre." | Telefono: ".$telefono,0,1,"L");
-
-        $this->pdf->ln();
-
-        $this->pdf->SetFont('Arial','B',16);
-        $this->pdf->SetFillColor(200,220,255);
-        $this->pdf->Cell(0,6,"Resumen de tus suscripciones en los siguientes ejemplares: ",0,1,'L',true);
-        $this->pdf->ln();
-        $this->pdf->SetFont('Arial','',13);
-
-        foreach ($result as $v){
-            $this->pdf->Cell(40,10,"Ejemplar: ".$v["ejemplar"]);
+   
+    public function generarResumenDeSuscripciones(){
+        if(isset($_SESSION['name'])){
+            $name=$_SESSION['name'];
+            $result=$this->model->obtenerSuscripciones($_SESSION['name']);
+            if($result){
+                $da=array();
+            $nombre=$result[0]["nombre"];
+            $telefono=$result[0]["telefono"];
+    
+            $this->pdf->AddPage();
+            $this->pdf->SetFont('Arial','B',12);
+    
+            $this->pdf->SetFillColor(200,220,255);
+            $this->pdf->Cell(0,6,"RESUMEN DE SUSCRIPCIONES | InfoNete | $nombre",0,1,'L',true);
             $this->pdf->ln();
-            $this->pdf->Cell(40,10,"Fecha de suscripcion: ".$v["fecha"]);
+    
+            $this->pdf->SetFont('Arial','',13);
+            $this->pdf->Cell(50,10,"Nombre: ".$nombre." | Telefono: ".$telefono,0,1,"L");
+    
             $this->pdf->ln();
-            $this->pdf->Cell(40,10,"Precio: ".$v["precio"],0,1);
+    
+            $this->pdf->SetFont('Arial','B',16);
+            $this->pdf->SetFillColor(200,220,255);
+            $this->pdf->Cell(0,6,"Resumen de tus suscripciones en los siguientes ejemplares: ",0,1,'L',true);
             $this->pdf->ln();
-        }
-        $this->pdf->SetY(250);
-        $this->pdf->SetFont('Arial','I',10);
-        $this->pdf->Cell(0,10,'Gracias por confiar en Infonete',0,0,'C');
-
-        $this->pdf->Output();
+            $this->pdf->SetFont('Arial','',13);
+    
+            foreach ($result as $v){
+                $this->pdf->Cell(40,10,"Ejemplar: ".$v["ejemplar"]);
+                $this->pdf->ln();
+                $this->pdf->Cell(40,10,"Fecha de suscripcion: ".$v["fecha"]);
+                $this->pdf->ln();
+                $this->pdf->Cell(40,10,"Precio: ".$v["precio"],0,1);
+                $this->pdf->ln();
+            }
+            $this->pdf->SetY(250);
+            $this->pdf->SetFont('Arial','I',10);
+            $this->pdf->Cell(0,10,'Gracias por confiar en Infonete',0,0,'C');
+    
+            $this->pdf->Output(); 
+            }
+            echo "no tiene resumenes";
+        
+        }else{
+            $this->index();
+        }       
     }
+
+    public function generarResumenDeCompras(){
+        if(isset($_SESSION['name'])){
+            $name=$_SESSION['name'];
+            $result=$this->model->obtenerCompras($_SESSION['name']);
+            if($result){
+            $da=array();
+            $nombre=$result[0]["nombre"];
+    
+            $this->pdf->AddPage();
+            $this->pdf->SetFont('Arial','B',12);
+    
+            $this->pdf->SetFillColor(200,220,255);
+            $this->pdf->Cell(0,6,"RESUMEN DE COMPRAS | InfoNete | $nombre",0,1,'L',true);
+            $this->pdf->ln();
+    
+            $this->pdf->SetFont('Arial','',13);
+            $this->pdf->Cell(50,10,"Nombre de usuario: ".$nombre,0,1,"L");
+    
+            $this->pdf->ln();
+    
+            $this->pdf->SetFont('Arial','B',16);
+            $this->pdf->SetFillColor(200,220,255);
+            $this->pdf->Cell(0,6,"Resumen de tus compras en las siguientes ediciones: ",0,1,'L',true);
+            $this->pdf->ln();
+            $this->pdf->SetFont('Arial','',13);
+    
+            foreach ($result as $v){
+                $this->pdf->Cell(40,10,"Ejemplar: ".$v["ejemplar"]);
+                $this->pdf->ln();
+                $this->pdf->Cell(40,10,"Edicion: ".$v["edicion"]);
+                $this->pdf->ln();
+                $this->pdf->Cell(40,10,"Numero de edicion: ".$v["numero"]);
+                $this->pdf->ln();
+                $this->pdf->Cell(40,10,"Precio: ".$v["precio"],0,1);
+                $this->pdf->ln();
+            }
+            $this->pdf->SetY(250);
+            $this->pdf->SetFont('Arial','I',10);
+            $this->pdf->Cell(0,10,'Gracias por confiar en Infonete',0,0,'C');
+    
+            $this->pdf->Output(); 
+            }
+            echo "no tiene resumenes";
+        
+        }else{
+            $this->index();
+        }    
+    }
+
+
     public function registro(){
         echo $this->renderer->render( "view/regisroView.php");
     }

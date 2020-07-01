@@ -1,4 +1,4 @@
-{{> headerLogeado}}
+{{> headerContenidista}}
 
 <div class="container mt-5">
     <a class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="/seccion/index">Agregar seccion</a>

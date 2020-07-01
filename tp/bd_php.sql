@@ -6,10 +6,29 @@ insert into rol values(2,"admin");
 insert into rol values(3,"contenidista");
 insert into foto values(4,"pagar.png",5);
 
+select * from foto;
+select * from usuario;
+select * from ejemplar;
+insert into ejemplar values(3,"La nacion",1,1,100);
+
+select * from noticia;
+select * from usuariosuscribeejemplar;
 insert into usuariosuscribeejemplar values('2020-06-12',3,2,1); 
 insert into usuariosuscribeejemplar values('2020-06-13',3,1,1); 
+insert into usuariosuscribeejemplar values('2020-06-12',3,3,1); 
+insert into usuariosuscribeejemplar values('2020-06-13',3,1,1); 
 
-select u.nombre,u.telefono,e.nombre,e.precio from usuariosuscribeejemplar as s
+insert into usuariocompraedicion values(3,1);
+
+select e.nombre,e.precio,e.numero,u.nombre from usuariocompraedicion as ue
+inner join edicion as e
+on e.id=ue.id_edicion
+inner join usuario as u
+on u.id=ue.id_usuario
+where u.id=3
+;
+
+select u.nombre,u.telefono,e.nombre,e.precio,s.fecha from usuariosuscribeejemplar as s
 inner join ejemplar as e on s.id_ejemplar = e.id
 inner join usuario as u on s.id_usuario = u.id
 where u.id=3
@@ -20,13 +39,12 @@ create table rol(
     nombre varchar(25),
     primary key(id)
 );
-
 insert into usuario values('1',"facu","facu","1234","19990101","facu@gmail.com",11111,"san justo",2);
 insert into usuario values('2',"ale","ale","1234","19990101","ale@gmail.com",11111,"san justo",3);
 insert into usuario values('3',"marcos","marcos","1234","19990101","marcos@gmail.com",11111,"san justo",1);
 
 insert into categoria values('1','diario'),('2','revista');
-
+select * from noticia;
 insert into noticia values('5', 'paga', 'hola.com', 'hola', 'contenido', 'subtitulo', 'pagaa', '1', '2','3', false);
 
 create table usuario(

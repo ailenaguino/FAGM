@@ -49,14 +49,7 @@ class UsuarioModel
     public function obtenerRoles(){
         return $this->connexion->query("SELECT * FROM rol");
     }
-    public function obtenerSuscripciones($id){
-        return $this->connexion->query("select u.nombre as 'nombre',u.telefono as 'telefono',
-        e.nombre as 'ejemplar',e.precio as 'precio',s.fecha as 'fecha' from usuariosuscribeejemplar as s
-        inner join ejemplar as e on s.id_ejemplar = e.id
-        inner join usuario as u on s.id_usuario = u.id
-        where u.id='$id'     
-        ");
-    }
+    
     public function insertar($data){
         $username=$data["usuario"];
         $nombre=$data["nombre"];
@@ -75,6 +68,25 @@ class UsuarioModel
         return $this->connexion->queryInsert("UPDATE usuario
         SET id_rol='$id_rol'
         WHERE id='$id'");
+    }
+    public function obtenerSuscripciones($username){
+        return $this->connexion->query("select u.nombre as 'nombre',u.telefono as 'telefono',
+        e.nombre as 'ejemplar',e.precio as 'precio',s.fecha as 'fecha' from usuariosuscribeejemplar as s
+        inner join ejemplar as e on s.id_ejemplar = e.id
+        inner join usuario as u on s.id_usuario = u.id
+        where u.nombre_usuario='$username'     
+        ");
+    }
+    public function obtenerCompras($username){
+        return $this->connexion->query("select e.nombre as 'edicion',ej.nombre as 'ejemplar',e.precio as 'precio',e.numero as 'numero',u.nombre as 'nombre'
+            from usuariocompraedicion as ue
+            inner join edicion as e
+            on e.id=ue.id_edicion
+            inner join usuario as u
+            on u.id=ue.id_usuario
+            inner join ejemplar as ej
+            on ej.id=e.id_ejemplar
+            where u.nombre_usuario='$username'");
     }
 
 }

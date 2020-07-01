@@ -14,9 +14,13 @@ class SeccionController
     public function index(){
         echo $this->renderer->render("view/agregarSeccion.php");
     }
-
     public function listar(){
         $data["secciones"] = $this->model->obtenerSecciones();
+        echo $this->renderer->render("view/listarSecciones.php", $data);
+    }
+    public function listarConMensaje($mensaje){
+        $data["secciones"] = $this->model->obtenerSecciones();
+        $data["mensaje"]=$mensaje["mensaje"];
         echo $this->renderer->render("view/listarSecciones.php", $data);
     }
 
@@ -59,7 +63,8 @@ class SeccionController
             $mensaje["mensaje"] = "Seccion incorrecta";
         }
 
-        echo $this->renderer->render("view/agregarSeccion.php", $mensaje);
+       // echo $this->renderer->render("view/agregarSeccion.php", $mensaje);
+       echo $this->listarConMensaje($mensaje);
     }
 
     public function validarNombre($nombre){

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <title>Infonete</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,13 +8,27 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-md bg-info navbar-dark">
-    <a href="index.php"><span class="navbar-brand mb-0 h1">InfoNete</span></a>
-    <div class="col clearfix">
-        <a href="/usuario/registro"><button type="button" class="btn btn-outline-light float-right">Registrarse</button></a>
-        <a href="/usuario"><button type="button" class="btn btn-outline-light float-right mr-3">Iniciar Sesión</button></a>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    
+    <a href="/usuario/index"><span class="navbar-brand mb-0 h1">InfoNete</span></a>
+ 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+         <a href="/usuario/registro" class="btn btn-outline-light mr-3 mt-1">Registrarse</a>
+ 
+      </li>
+      <li class="nav-item">
+            <a href="/usuario" class="btn btn-outline-light mt-1">Iniciar Sesión</a>
+      </li>
+    </ul>    
+  </div>
 </nav>
+
 
 <!-- Page content -->
 <div class="container">
