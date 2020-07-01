@@ -30,15 +30,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/view/partial" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\view" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\view\partial" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\view" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -56,7 +56,14 @@
       <workItem from="1592774905708" duration="6822000" />
       <workItem from="1592865316276" duration="3554000" />
       <workItem from="1592952510269" duration="3044000" />
-      <workItem from="1593266997967" duration="9483000" />
+      <workItem from="1593289339008" duration="682000" />
+      <workItem from="1593367140242" duration="11890000" />
+      <workItem from="1593385158427" duration="4553000" />
+      <workItem from="1593464511851" duration="3215000" />
+      <workItem from="1593468806631" duration="951000" />
+      <workItem from="1593473474097" duration="59000" />
+      <workItem from="1593478684977" duration="2735000" />
+      <workItem from="1593551471340" duration="9772000" />
     </task>
     <servers />
   </component>
@@ -72,21 +79,27 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591655093933" />
+    <state x="481" y="98" key="FileChooserDialogImpl" timestamp="1593289392328">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="481" y="98" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593289392328" />
     <state x="787" y="243" key="NewPhpClassDialog" timestamp="1592690974932">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="787" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592690974932" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1593268804879">
+    <state x="565" y="310" key="NewPhpFileDialog" timestamp="1593465770697">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="565" y="310" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1593465770697" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592777469086" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1593558869176">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593268804879" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1592777635160">
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1593558869176" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1593558870417">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592777635160" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592694591825">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592694591825" />
+    <state x="443" y="158" width="672" height="475" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1593370830416" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1593558870417" />
   </component>
 </project>

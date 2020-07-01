@@ -3,8 +3,8 @@ require_once("ModuleInitializer.php");
 require_once("Router.php");
 session_start();
 
-$module = $_GET["module"]?$_GET["module"]:"usuario";
-$action = $_GET["action"]?$_GET["action"]:"index";
+$module = isset($_GET["module"])?$_GET["module"]:"usuario";
+$action = isset($_GET["action"])?$_GET["action"]:"index";
 
 $moduleInitializer = new ModuleInitializer();
 

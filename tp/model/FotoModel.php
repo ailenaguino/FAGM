@@ -21,4 +21,5 @@ class FotoModel
         return $this->connexion->query("select max(id) as id from foto");
     }
 
+
 }

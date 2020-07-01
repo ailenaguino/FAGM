@@ -11,6 +11,13 @@ class NoticiaModel
     public function obtenerNoticias(){
         return $this->connexion->query("SELECT * FROM noticia");
     }
+    public function obtenerNoticiaGratis(){
+        return $this->connexion->query("select n.id,n.titulo,n.subtitulo, f.direccion, f.id as idFoto from foto as f
+                                        inner join noticia as n
+                                        on f.id_noticia=n.id
+                                        where n.estado = '1' and n.precio in (0,0.0,0.00)
+                                        group by n.id");
+    }
     public function obtenerNoticia($id){
         return $this->connexion->query("SELECT * FROM noticia where id = '$id'");
     }
@@ -34,10 +41,11 @@ class NoticiaModel
         $titulo=$data["titulo"];
         $id_seccion=$data["id_seccion"];
         $id_usuario=$data["id_usuario"];
+        $precio=$data["precio"];
 
         return $this->connexion->queryInsert("INSERT INTO noticia VALUES(
         '','$video','$link','$ubicacion','$contenido','$subtitulo',
-        '$titulo','$id_seccion','$id_usuario',false)");
+        '$titulo','$id_seccion','$id_usuario','$precio',false)");
 
     }
 }

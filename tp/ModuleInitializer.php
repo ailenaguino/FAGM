@@ -22,8 +22,11 @@ class ModuleInitializer
     {
         include_once("model/UsuarioModel.php");
         include_once("controller/UsuarioController.php");
+        include_once('pdf/fpdf.php');
+        $pdf=new FPDF();
+
         $model = new UsuarioModel($this->database);
-        return new UsuarioController($model,$this->renderer);
+        return new UsuarioController($model,$this->renderer,$pdf);
     }
 
     public function createCategoriaController(){
@@ -73,6 +76,7 @@ class ModuleInitializer
         include_once("model/SeccionModel.php");
         include_once("model/FotoModel.php");
         include_once("controller/NoticiaController.php");
+
         $model = new NoticiaModel($this->database);
         $ejemplar = new EjemplarModel($this->database);
         $edicion = new EdicionModel($this->database);

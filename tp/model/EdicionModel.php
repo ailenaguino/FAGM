@@ -13,6 +13,13 @@ class EdicionModel
         return $this->connexion->query("SELECT * FROM edicion");
     }
 
+    public function obtenerEdicionesConSuEjemplar(){
+        return $this->connexion->query("select e.nombre as nombreEdicion,e.id, e.numero, e.precio, ej.nombre as nombreEjemplar from edicion as e
+                                        inner join ejemplar as ej
+                                        on e.id_ejemplar = ej.id
+                                        where e.estado = '1'");
+    }
+
     public function obtenerEdicionesDeEjemplar($id){
         return $this->connexion->query("SELECT numero,edicion.nombre,edicion.id FROM edicion inner join ejemplar on '$id'= edicion.id_ejemplar group by id");
     }
@@ -37,5 +44,26 @@ class EdicionModel
 
     public function insertarRelacion($edicion, $seccion){
         $this->connexion->queryInsert("INSERT INTO edicionPoseeSeccion VALUES ('$seccion', '$edicion')");
+    }
+
+    public function obtenerEdicionPorId($id){
+        return $this->connexion->query("select * from edicion where id = '$id'");
+    }
+
+    public function update($data){
+        $nombre=$data["nombre"];
+        $numero=$data["numero"];
+        $id_ejemplar=$data["id_ejemplar"];
+        $precio=$data["precio"];
+        $id=$data["id"];
+        return $this->connexion->queryInsert("UPDATE edicion SET nombre='$nombre', id_ejemplar='$id_ejemplar',
+        precio='$precio', numero='$numero' WHERE id='$id'");
+    }
+
+    public function eliminarRelacion($edicion){
+        $this->connexion->queryInsert("delete from edicionposeeseccion where id_edicion='$edicion'");
+    }
+    public function cambiarEstado($id,$estado){
+        return $this->connexion->queryInsert("UPDATE edicion SET estado= $estado WHERE id=$id");
     }
 }

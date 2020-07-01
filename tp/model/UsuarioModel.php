@@ -11,6 +11,7 @@ class UsuarioModel
     public function obtenerUsuarios(){
         return $this->connexion->query("SELECT * FROM usuario");
     }
+
     public function mostrarUsuariosYRolPorId($id_usuario){
         return $this->connexion->query("select u.id as'id',u.nombre as 'nombre',r.id as 'id_rol', r.nombre as 'rol' from usuario 
         as u
@@ -25,8 +26,7 @@ class UsuarioModel
         on u.id_rol=r.id");
     }
     public function busquedaDeUsuarios($username){
-        return $this->connexion->query("select * from usuario where nombre like '%$username%';
-");
+        return $this->connexion->query("select * from usuario where nombre like '%$username%'");
     }
     public function consultarNombreUsuario($username){
         return $this->connexion->query("SELECT * FROM usuario WHERE nombre_usuario = '$username'");
@@ -49,7 +49,14 @@ class UsuarioModel
     public function obtenerRoles(){
         return $this->connexion->query("SELECT * FROM rol");
     }
-
+    public function obtenerSuscripciones($id){
+        return $this->connexion->query("select u.nombre as 'nombre',u.telefono as 'telefono',
+        e.nombre as 'ejemplar',e.precio as 'precio',s.fecha as 'fecha' from usuariosuscribeejemplar as s
+        inner join ejemplar as e on s.id_ejemplar = e.id
+        inner join usuario as u on s.id_usuario = u.id
+        where u.id='$id'     
+        ");
+    }
     public function insertar($data){
         $username=$data["usuario"];
         $nombre=$data["nombre"];
@@ -58,9 +65,10 @@ class UsuarioModel
         $ubicacion=$data["ubicacion"];
         $email=$data["email"];
         $password=$data["password"];
+        $rol=$data['rol'];
 
-        return $this->connexion->query("INSERT INTO USUARIO VALUES('','$nombre','$username',
-            '$password','$fecha','$email','$telefono','$ubicacion',1)");
+        return $this->connexion->queryInsert("INSERT INTO USUARIO VALUES('','$nombre','$username',
+            '$password','$fecha','$email','$telefono','$ubicacion','$rol')");
     }
 
     public function updateRol($id_rol,$id){

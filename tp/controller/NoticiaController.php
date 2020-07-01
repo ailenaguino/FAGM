@@ -8,6 +8,7 @@ class NoticiaController
     private $modelEdicion;
     private $modelSeccion;
     private $modelFoto;
+
     public function __construct($model, $renderer,$ejemplar,$edicion,$seccion,$foto){
         $this->renderer = $renderer;
         $this->model = $model;
@@ -50,10 +51,10 @@ class NoticiaController
             echo $this->index();
         }
     }
-    
-    public function listaDeNoticias(){
+
+    public function listaAdmin(){
         $data["noticias"] = $this->model->obtenerNoticias();
-        echo $this->renderer->render( "view/listaNoticias.php", $data);
+        echo $this->renderer->render( "view/listaNoticiasAdmin.php", $data);
     }
 
     public function cambiarEstado(){
@@ -66,14 +67,14 @@ class NoticiaController
         }
         $this->model->cambiarEstado($id,$estado);
         $data["noticias"] = $this->model->obtenerNoticias();
-        echo $this->renderer->render( "view/listaNoticias.php", $data);
+        echo $this->renderer->render( "view/listaNoticiasAdmin.php", $data);
     }
 
     public  function eliminar(){
         $id=$_POST["id"];
         $this->model->eliminar($id);
         $data["noticias"] = $this->model->obtenerNoticias();
-        echo $this->renderer->render( "view/listaNoticias.php", $data);
+        echo $this->renderer->render( "view/listaNoticiasAdmin.php", $data);
     }
 
     public function validar(){
@@ -86,6 +87,7 @@ class NoticiaController
         $data["titulo"]=$_POST["titulo"];
         $data["id_seccion"]=$_POST["seccion"];
         $data["id_usuario"]='';
+        $data["precio"]=$_POST["precio"];
 
         foreach ($_SESSION['id'] as $id){
             foreach ($id as $valor){
@@ -108,6 +110,18 @@ class NoticiaController
         $data['direccion']=$this->modelFoto->obtenerFoto($id);
         echo $this->renderer->render("view/elegirMasFotos.php", $data);
     }
+
+    public function mostrarPortadaNoticia(){
+        $data['direccion']=$this->model->obtenerNoticiaGratis();
+        echo $this->renderer->render("view/mostrarNoticiasGratis.php", $data);
+    }
+
+    public function verNoticiaCompleta(){
+        $data['noticia']=$this->model->obtenerNoticia($_POST["id"]);
+        $data['fotos']=$this->modelFoto->obtenerFoto($_POST["id"]);
+        echo $this->renderer->render("view/verNoticiaCompleta.php", $data);
+    }
+
     public function guardarImagen(){
         $nombre_img = $_FILES['file']['name'];
         $tmp_name=$_FILES["file"]["tmp_name"];
