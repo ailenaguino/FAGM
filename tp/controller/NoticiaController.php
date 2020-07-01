@@ -8,6 +8,7 @@ class NoticiaController
     private $modelEdicion;
     private $modelSeccion;
     private $modelFoto;
+
     public function __construct($model, $renderer,$ejemplar,$edicion,$seccion,$foto){
         $this->renderer = $renderer;
         $this->model = $model;

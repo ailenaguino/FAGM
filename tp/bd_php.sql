@@ -5,7 +5,15 @@ insert into rol values(1,"usuario");
 insert into rol values(2,"admin");
 insert into rol values(3,"contenidista");
 insert into foto values(4,"pagar.png",5);
-select * from foto;
+
+insert into usuariosuscribeejemplar values('2020-06-12',3,2,1); 
+insert into usuariosuscribeejemplar values('2020-06-13',3,1,1); 
+
+select u.nombre,u.telefono,e.nombre,e.precio from usuariosuscribeejemplar as s
+inner join ejemplar as e on s.id_ejemplar = e.id
+inner join usuario as u on s.id_usuario = u.id
+where u.id=3
+;
 
 create table rol(
 	id int not null auto_increment,
