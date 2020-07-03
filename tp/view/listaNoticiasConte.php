@@ -1,4 +1,4 @@
-{{> headerAdmin}}
+{{> headerContenidista}}
 
 <div class="form-group">
     <h2>Noticias</h2>
@@ -37,6 +37,6 @@
         {{/noticias}}
         </tbody>
     </table>
-    <a href="/usuario/listaAdmin" class="btn btn-outline-danger my-3 ml-3">Volver</a>
+    <a href="/usuario/listaConte" class="btn btn-outline-danger my-3 ml-3">Volver</a>
 </div>
 {{> footer}}

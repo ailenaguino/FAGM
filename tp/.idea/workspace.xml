@@ -30,7 +30,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/view/partial" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/view" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -39,6 +39,7 @@
       <recent name="C:\xampp\htdocs\view" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\view" />
       <recent name="C:\xampp\htdocs\view\partial" />
     </key>
   </component>
@@ -64,7 +65,7 @@
       <workItem from="1593468806631" duration="951000" />
       <workItem from="1593473474097" duration="59000" />
       <workItem from="1593478684977" duration="2735000" />
-      <workItem from="1593804388199" duration="7395000" />
+      <workItem from="1593804388199" duration="11264000" />
     </task>
     <servers />
   </component>
@@ -88,11 +89,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="787" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592690974932" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1593809871059">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1593812701669">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="565" y="310" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1593465770697" />
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593809871059" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593812701669" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1593811795728">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

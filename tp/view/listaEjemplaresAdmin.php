@@ -1,6 +1,9 @@
-{{> headerLogeado}}
+{{> headerAdmin}}
 
 <div class="form-group mt-5">
+    <h2>Ejemplares</h2>
+    <a href="/ejemplar/index">Crear nuevo Ejemplar</a>
+
     <table class="table table-bordered">
         <thead class="thead-dark">
         <tr>
