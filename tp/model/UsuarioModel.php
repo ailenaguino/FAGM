@@ -12,12 +12,12 @@ class UsuarioModel
         return $this->connexion->query("SELECT * FROM usuario");
     }
 
-    public function mostrarUsuariosYRolPorId($id_usuario){
+    public function mostrarUsuariosYRolPorId(){
         return $this->connexion->query("select u.id as'id',u.nombre as 'nombre',r.id as 'id_rol', r.nombre as 'rol' from usuario 
         as u
         inner join rol as r 
         on u.id_rol=r.id
-        having u.id='$id_usuario'
+        order by u.id
         ");
     }
     public function mostrarUsuariosYRol(){
@@ -88,5 +88,43 @@ class UsuarioModel
             on ej.id=e.id_ejemplar
             where u.nombre_usuario='$username'");
     }
+    public function mostrarContenidistas(){
+        return $this->connexion->query("select * from usuario where id_rol=3");
+    }
+
+    public function mostrarClientesYProductos(){
+        return $this->connexion->query("
+            select u.nombre as 'usuario',e.numero as 'edicion',e.nombre as 'nombre_edicion',ej.nombre as 'ejemplar' from usuario as u
+            inner join usuariocompraedicion as c
+            on u.id=c.id_usuario
+            inner join edicion as e
+            on c.id_edicion = e.id
+            inner join ejemplar as ej
+            on ej.id =e.id_ejemplar
+            where id_rol=1
+            order by u.id;
+        ");
+    }
+    public function suscripcionesDeProducto(){
+        return $this->connexion->query("
+        select e.nombre as 'ejemplar',count(e.id) as 'total',e.id as 'id' from ejemplar as e
+        inner join usuariosuscribeejemplar as ej
+        on e.id=ej.id_ejemplar
+        group by e.id");
+    }
+    public function comprasProducto($id_ejemplar){
+        return $this->connexion->query("
+            select count(e.id) as 'compras' from ejemplar as e
+            inner join edicion as ed
+            on e.id=ed.id_ejemplar
+            inner join usuariocompraedicion as us
+            on ed.id=us.id_edicion
+            where e.id='$id_ejemplar'
+            group by e.id
+       ");
+    }
+
+
+
 
 }

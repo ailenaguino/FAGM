@@ -32,6 +32,6 @@
         {{/ejemplares}}
         </tbody>
     </table>
-    <a href="/usuario/login" class="btn btn-outline-danger my-3 ml-3">Volver</a>
+    <a href="/usuario/listaAdmin" class="btn btn-outline-danger my-3 ml-3">Volver</a>
 </div>
 {{> footer}}
