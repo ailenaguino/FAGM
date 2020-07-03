@@ -81,6 +81,10 @@ class EjemplarController
         $data["ejemplares"] = $this->model->obtenerEjemplares();
         echo $this->renderer->render("view/listaEjemplaresAdmin.php", $data);
     }
+    public function listaConte(){
+        $data["ejemplares"] = $this->model->obtenerEjemplares();
+        echo $this->renderer->render("view/listaEjemplaresConte.php", $data);
+    }
     public function cambiarEstado()
     {
         $id = $_POST["id"];

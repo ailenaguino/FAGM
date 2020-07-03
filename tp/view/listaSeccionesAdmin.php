@@ -1,6 +1,9 @@
-{{> headerLogeado}}
+{{> headerAdmin}}
 
 <div class="form-group mt-5">
+    <h2>Secciones</h2>
+    <a href="/seccion/index">Crear nueva Sección</a>
+
     <table class="table table-bordered">
         <thead class="thead-dark">
         <tr>

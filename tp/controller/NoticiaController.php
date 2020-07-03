@@ -56,7 +56,10 @@ class NoticiaController
         $data["noticias"] = $this->model->obtenerNoticias();
         echo $this->renderer->render( "view/listaNoticiasAdmin.php", $data);
     }
-
+    public function listaConte(){
+        $data["noticias"] = $this->model->obtenerNoticias();
+        echo $this->renderer->render( "view/listaNoticiasConte.php", $data);
+    }
     public function cambiarEstado(){
         $id=$_POST["id"];
         $estado=$_POST["estado"];

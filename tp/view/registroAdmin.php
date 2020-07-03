@@ -1,4 +1,5 @@
-{{> headerLogeado}}
+{{> headerAdmin}}
+
 <div class="container pt-5 my-3 border">
     <h2 class="text-center">Formulario de Registro</h2>
 
@@ -59,11 +60,6 @@
         <h5 class="text-danger">{{error}}</h5>
         {{/error}}
 
-        <!--<div class="col clearfix">
-            <input type="submit" value="Registrar usuario" class="btn btn-info float-right">
-            <input type="reset" value="Volver" class="btn btn-info float-right">
-        </div>
-        -->
         <button class="btn btn-info">Registrar usuario</button>
         <a href="/usuario/editarRol" class="btn btn-danger">Volver</a>
     </form>

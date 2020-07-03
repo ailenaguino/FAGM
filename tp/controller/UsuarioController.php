@@ -392,4 +392,10 @@ class UsuarioController
     public function listaAdmin(){
        echo $this->renderer->render("view/listadoAdmin.php");
     }
+    public function estadisticasAdmin(){
+        echo $this->renderer->render("view/estadisticasAdmin.php");
+    }
+    public function listaConte(){
+        echo $this->renderer->render("view/listadoConte.php");
+    }
 }

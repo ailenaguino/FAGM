@@ -27,7 +27,7 @@
 
         <div class="col clearfix">
             <input type="submit" value="Aceptar" class="btn btn-info float-right">
-            <a class="btn btn-info" href="/usuario/contenidista">Atrás</a>
+            <a class="btn btn-info" href="/usuario/login">Atrás</a>
         </div>
 
     </form>
