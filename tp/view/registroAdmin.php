@@ -49,7 +49,7 @@
             <input type="password" name="password2" id="" placeholder="Repita su contraseña" class="form-control" required>
         </div>
 
-        <select class="my-5" name="rol">
+        <select class="my-5 form-control" name="rol">
             {{#sesion}}
             <option value="{{id}}">{{nombre}}</option>
             {{/sesion}}
@@ -59,11 +59,13 @@
         <h5 class="text-danger">{{error}}</h5>
         {{/error}}
 
-        <div class="col clearfix">
+        <!--<div class="col clearfix">
             <input type="submit" value="Registrar usuario" class="btn btn-info float-right">
-            <input type="reset" value="Cancelar" class="btn btn-info float-right">
+            <input type="reset" value="Volver" class="btn btn-info float-right">
         </div>
-
+        -->
+        <button class="btn btn-info">Registrar usuario</button>
+        <a href="/usuario/editarRol" class="btn btn-danger">Volver</a>
     </form>
 </div>
 

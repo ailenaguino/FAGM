@@ -1,15 +1,14 @@
-{{> headerLogeado}}
+{{> headerAdmin}}
 
     <div class="container mt-5 ">
-        <a  class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="/usuario/registroDelAdmin">Registrar usuarios</a>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Gracias por trabajar en Infonete!</h2>
+                <img src="/view/assets/escritura.png">
+            </div>
+        </div>
         <a  class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="/usuario/editarRol">Editar rol</a>
-        <a  class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="/categoria/agregar">Agregar nueva categoria</a>
-        <hr class="my-4"/>
-        <a  class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="/ejemplar/listaAdmin">Administrar ejemplares</a>
-        <a  class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="/seccion/listaAdmin">Administrar secciones</a>
-        <a  class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="/edicion/listaAdmin">Administrar ediciones</a>
-        <a  class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="/noticia/listaAdmin">Administrar noticias</a>
-
+    <a href="/usuario/listaAdmin">ver listas</a>
     </div>
 
 {{> footer}}
