@@ -12,7 +12,7 @@ class NoticiaModel
         return $this->connexion->query("SELECT * FROM noticia");
     }
     public function obtenerNoticiaGratis(){
-        return $this->connexion->query("select n.id,n.titulo,n.subtitulo, f.direccion, f.id as idFoto from foto as f
+        return $this->connexion->query("select n.id,n.titulo,n.subtitulo, f.direccion from foto as f
                                         inner join noticia as n
                                         on f.id_noticia=n.id
                                         where n.estado = '1' and n.precio in (0,0.0,0.00)
@@ -48,4 +48,45 @@ class NoticiaModel
         '$titulo','$id_seccion','$id_usuario','$precio',false)");
 
     }
+
+    public function obtenerNoticiasPagas($id){
+        return $this->connexion->query("select n.id,n.titulo,n.subtitulo, f.direccion, e.nombre as nombreEjemplar from usuario as u 
+                                        inner join usuariosuscribeejemplar as se
+                                        on $id = se.id_usuario
+                                        inner join ejemplar as e
+                                        on se.id_ejemplar = e.id
+                                        inner join edicion as ed
+                                        on e.id = ed.id_ejemplar
+                                        inner join edicionposeeseccion as eps
+                                        on ed.id = eps.id_edicion
+                                        inner join seccion as s
+                                        on eps.id_seccion = s.id
+                                        inner join noticia as n
+                                        on s.id = n.id_seccion
+                                        inner join foto as f
+                                        on n.id = f.id_noticia
+                                        where n.estado = '1'
+                                        group by n.id");
+    }
+
+    public function obtenerNoticiasPagasEdicion($id){
+        return $this->connexion->query("select n.id,n.titulo,n.subtitulo, f.direccion, ed.nombre as nombreEdicion from usuario as u 
+                                        inner join usuariocompraedicion as ce
+                                        on $id = ce.id_usuario
+                                        inner join edicion as ed
+                                        on ce.id_edicion = ed.id
+                                        inner join edicionposeeseccion as eps
+                                        on ed.id = eps.id_edicion
+                                        inner join seccion as s
+                                        on eps.id_seccion = s.id
+                                        inner join noticia as n
+                                        on s.id = n.id_seccion
+                                        inner join foto as f
+                                        on n.id = f.id_noticia
+                                        where n.estado = '1'
+                                        group by n.id");
+
+    }
+
+
 }

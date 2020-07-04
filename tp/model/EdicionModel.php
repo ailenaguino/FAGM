@@ -84,7 +84,4 @@ class EdicionModel
                                                 where fecha between '$inicio' and '$fin'
                                                 group by fecha;");
     }
-    public function insertarCompra($idEdicion,$idUsuario,$fecha){
-        return $this->connexion->queryInsert("INSERT INTO usuariocompraedicion (id_usuario,id_edicion,fecha) VALUES($idUsuario,$idEdicion,'$fecha')");
-    }
 }

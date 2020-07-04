@@ -59,7 +59,4 @@ class EjemplarModel
                                                 where fecha between '$inicio' and '$fin'
                                                 group by fecha;");
     }
-    public function insertarCompra($idEjemplar,$idUsuario,$fecha,$vencimiento){
-        return $this->connexion->queryInsert("INSERT INTO usuariosuscribeejemplar (id_usuario,id_ejemplar,fecha,fecha_vencimiento) VALUES($idUsuario,$idEjemplar,'$fecha','$vencimiento')");
-    }
 }
