@@ -1,6 +1,9 @@
-{{> headerLogeado}}
+{{> headerAdmin}}
 
 <div class="form-group mt-5">
+    <h2>Secciones</h2>
+    <a href="/seccion/index">Crear nueva Sección</a>
+
     <table class="table table-bordered">
         <thead class="thead-dark">
         <tr>
@@ -30,6 +33,6 @@
         {{/secciones}}
         </tbody>
     </table>
-    <a href="/usuario/login" class="btn btn-outline-danger my-3 ml-3">Volver</a>
+    <a href="/usuario/listaAdmin" class="btn btn-outline-danger my-3 ml-3">Volver</a>
 </div>
 {{> footer}}

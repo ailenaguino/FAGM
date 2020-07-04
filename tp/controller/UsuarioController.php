@@ -275,22 +275,127 @@ class UsuarioController
     }
 
     public function editarRol(){
-        $data["usuarios"]=$this->model->mostrarUsuariosYRol();
-        echo $this->renderer->render("view/editarRolUsuario.php",$data);
-    }
-
-    public function buscarUsuario(){
-        $id_usuario=$_POST["id"];
-        $data["usuarios"]=$this->model->mostrarUsuariosYRol();
-        $data["state"]=true;
-        $data["encontrados"]=$this->model->mostrarUsuariosYRolPorId($id_usuario);
+        $data["usuarios"]=$this->model->mostrarUsuariosYRolPorId();
         $data["roles"]=$this->model->obtenerRoles();
         echo $this->renderer->render("view/editarRolUsuario.php",$data);
     }
+
     public function actualizarRol(){
         $rol=$_POST['rol'];
         $usuario=$_POST["usuario"];
         $this->model->updateRol($rol,$usuario);
         echo $this->editarRol();
+    }
+
+    public function mostrarContenidistas(){
+        if(isset($_SESSION['name'])){
+            $result=$this->model->mostrarContenidistas();
+            if($result) {
+                $this->pdf->AddPage();
+                $this->pdf->SetFont('Arial', 'B', 12);
+
+                $this->pdf->SetFillColor(200, 220, 255);
+                $this->pdf->Cell(0, 6, "INFORMACION DE CONTENIDISTAS | InfoNete ", 0, 1, 'L', true);
+                $this->pdf->ln();
+                $this->pdf->SetFont('Arial', '', 13);
+                foreach ($result as $v) {
+                    $this->pdf->ln();
+                    $this->pdf->Cell(40, 10, "Nombre: " . $v["nombre"]);
+                    $this->pdf->ln();
+                    $this->pdf->Cell(40, 10, "Nombre de usuario: " . $v["nombre_usuario"]);
+                    $this->pdf->ln();
+                    $this->pdf->Cell(40, 10, "Fecha de nacimiento: " . $v["fecha_nacimiento"]);
+                    $this->pdf->ln();
+                    $this->pdf->Cell(40, 10, "Email: " . $v["email"]);
+                    $this->pdf->ln();
+                    $this->pdf->Cell(40, 10, "Telefono: " . $v["telefono"]);
+                    $this->pdf->ln();
+                    $this->pdf->Cell(40, 10, "Ubicacion: " . $v["ubicacion"]);
+                    $this->pdf->ln();
+                }
+                $this->pdf->Output();
+
+            }
+
+        }
+    }
+    public function mostrarClientesYProductos(){
+        if(isset($_SESSION['name'])){
+            $result=$this->model->mostrarClientesYProductos();
+            if($result){
+                $this->pdf->AddPage();
+                $this->pdf->SetFont('Arial', 'B', 12);
+
+                $this->pdf->SetFillColor(200, 220, 255);
+                $this->pdf->Cell(0, 6, "INFORMACION DE CLIENTES CON PRODUCTOS ADQUIRIDOS | InfoNete ", 0, 1, 'L', true);
+                $this->pdf->ln();
+                $this->pdf->SetFont('Arial', '', 13);
+                foreach ($result as $v) {
+                    $this->pdf->ln();
+                    $this->pdf->Cell(40, 10, "Nombre: " . $v["usuario"]);
+                    $this->pdf->ln();
+                    $this->pdf->Cell(40, 10, "Edicion: " . $v["nombre_edicion"]);
+                    $this->pdf->ln();
+                    $this->pdf->Cell(40, 10, "Edicion numero: " . $v["edicion"]);
+                    $this->pdf->ln();
+                    $this->pdf->Cell(40, 10, "Ejemplar: " . $v["ejemplar"]);
+                    $this->pdf->ln();
+                }
+                $this->pdf->Output();
+            }else{
+                echo "no hay resultados que mostrar";
+            }
+        }else{
+            echo $this->index();
+        }
+    }
+    public function suscripcionesDeProducto(){
+        if(isset($_SESSION['name'])){
+            $result=$this->model->suscripcionesDeProducto();
+            if($result){
+                $this->pdf->AddPage();
+                $this->pdf->SetFont('Arial', 'B', 12);
+
+                $this->pdf->SetFillColor(200, 220, 255);
+                $this->pdf->Cell(0, 6, "SUSCRIPCIONES DE PRODUCTOS | InfoNete ", 0, 1, 'L', true);
+                $this->pdf->ln();
+                $this->pdf->SetFont('Arial', '', 13);
+                foreach ($result as $v) {
+                    $this->pdf->ln();
+                    $this->pdf->Cell(40, 10, "Ejemplar: " . $v["ejemplar"]);
+                    $this->pdf->ln();
+                    $this->pdf->Cell(40, 10, "Suscripciones totales: " . $v["total"]);
+                    $this->pdf->ln();
+                    $compra=$this->model->comprasProducto($v["id"]);
+                    if($compra){
+                        $totalCompra=$compra[0]["compras"];
+                    }else{
+                        $totalCompra=0;
+                    }
+
+                    $this->pdf->Cell(40, 10, "Compras totales: " .$totalCompra);
+                    $this->pdf->ln();
+                }
+                $this->pdf->Output();
+            }else{
+                echo "no hay resultados que mostrar";
+            }
+        }else{
+            echo $this->index();
+        }
+
+
+    }
+    public function generarPdfs(){
+        echo $this->renderer->render("view/generarPdf.php");
+    }
+    public function listaAdmin(){
+       echo $this->renderer->render("view/listadoAdmin.php");
+    }
+    public function estadisticasAdmin(){
+        echo $this->renderer->render("view/estadisticasAdmin.php");
+    }
+    public function listaConte(){
+        echo $this->renderer->render("view/listadoConte.php");
     }
 }

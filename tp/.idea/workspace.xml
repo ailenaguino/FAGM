@@ -30,14 +30,19 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/view" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\view" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+<<<<<<< HEAD
+=======
+      <recent name="C:\xampp\htdocs\view" />
+>>>>>>> 4f4ef85be27ea981527997c29113efb297afe5ab
       <recent name="C:\xampp\htdocs\view\partial" />
     </key>
   </component>
@@ -63,8 +68,12 @@
       <workItem from="1593468806631" duration="951000" />
       <workItem from="1593473474097" duration="59000" />
       <workItem from="1593478684977" duration="2735000" />
+<<<<<<< HEAD
       <workItem from="1593746565076" duration="5011000" />
       <workItem from="1593830991070" duration="6063000" />
+=======
+      <workItem from="1593804388199" duration="11264000" />
+>>>>>>> 4f4ef85be27ea981527997c29113efb297afe5ab
     </task>
     <servers />
   </component>
@@ -88,6 +97,7 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="787" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592690974932" />
+<<<<<<< HEAD
     <state x="662" y="366" key="NewPhpFileDialog" timestamp="1593837271108">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -95,13 +105,25 @@
     <state x="662" y="366" key="NewPhpFileDialog/0.0.1600.860@0.0.1600.860" timestamp="1593837271108" />
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592777469086" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1592777635160">
+=======
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1593812701669">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592777635160" />
-    <state x="443" y="158" width="672" height="475" key="search.everywhere.popup" timestamp="1593370830416">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="565" y="310" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1593465770697" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593812701669" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1593811795728">
+>>>>>>> 4f4ef85be27ea981527997c29113efb297afe5ab
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1593811795728" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1593812282595">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="443" y="158" width="672" height="475" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1593370830416" />
+<<<<<<< HEAD
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592694591825" />
+=======
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1593812282595" />
+>>>>>>> 4f4ef85be27ea981527997c29113efb297afe5ab
   </component>
 </project>

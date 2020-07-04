@@ -88,6 +88,10 @@ class SeccionController
         $data["secciones"] = $this->model->obtenerSecciones();
         echo $this->renderer->render("view/listaSeccionesAdmin.php", $data);
     }
+    public function listaConte(){
+        $data["secciones"] = $this->model->obtenerSecciones();
+        echo $this->renderer->render("view/listaSeccionesConte.php", $data);
+    }
     public function cambiarEstado()
     {
         $id = $_POST["id"];

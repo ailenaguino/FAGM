@@ -115,6 +115,10 @@ class EdicionController
         $data["ediciones"] = $this->model->obtenerEdiciones();
         echo $this->renderer->render("view/listaEdicionesAdmin.php", $data);
     }
+    public function listaConte(){
+        $data["ediciones"] = $this->model->obtenerEdiciones();
+        echo $this->renderer->render("view/listaEdicionesConte.php", $data);
+    }
     public function cambiarEstado()
     {
         $id = $_POST["id"];
