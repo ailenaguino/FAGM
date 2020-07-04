@@ -37,7 +37,7 @@
                 <h5 class="card-title text-center">{{ejemplar}}</h5>
                 <p class="card-text">{{categoria}}<p>
                 <h5 class="card-title text-center">${{precio}}</h5>
-                <form action="" method="POST">
+                <form action="/ejemplar/pagarSuscripcion" method="POST">
                     <input type="hidden" name="id" value="{{id}}">
                     <button type="submit" class="btn btn-primary btn-block">Suscribirse</button>
                 </form>
@@ -64,7 +64,7 @@
                     <button type="submit" class="btn btn-success btn-block">Ver secciones</button>
                 </form>
                 <br>
-                <form action="" method="POST">
+                <form action="/edicion/comprarEdicion" method="POST">
                     <input type="hidden" name="id" value="{{id}}">
                     <button type="submit" class="btn btn-primary btn-block">Comprar</button>
                 </form>

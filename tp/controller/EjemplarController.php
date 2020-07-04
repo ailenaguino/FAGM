@@ -147,5 +147,45 @@ class EjemplarController
         echo $this->renderer->render("view/generarGraficoSuscripciones.php");
     }
 
+    public function pagarSuscripcion(){
+        $id = $_POST["id"];
+        $data['data']=$id;
+        echo $this->renderer->render("view/pagarSuscripcion.php",$data);
+    }
+    public function procesarPagoEjemplar(){
+        $idEjemplar = $_POST["idEjemplar"];
+        $nombreTarjeta=$_POST["username"];
+        $numeroTajerta=$_POST["cardNumber"];
+        $cvv=$_POST["cvv"];
+        $mes=$_POST["mes"];
+        $anio=$_POST["anio"];
+        $idUsuario=$_SESSION['id'];
+        $hoy =date("Y"). "-" . date("m") . "-" .date("d");
+        $vencimiento=date("Y-m-d",strtotime($hoy."+ 1 month"));
+        try{
+            $this->validarTarjeta($numeroTajerta,$cvv,$mes,$anio);
+            $this->model->insertarCompra($idEjemplar,$idUsuario,$hoy,$vencimiento);
+            echo $this->renderer->render("view/compraEdicionExitosa.php");
+        }catch (Exception $e){
+            $data["error"] = $e->getMessage();
+            $data['data']=$idEjemplar;
+            echo $this->renderer->render("view/pagarSuscripcion.php", $data);
+        }
+
+
+    }
+    public function validarTarjeta($numeroTajerta,$cvv,$mes,$anio){
+        if(strlen($numeroTajerta)!=16){
+            throw new Exception("Ingrese una tarjeta valida");
+        }
+        if(strlen($cvv)!=3){
+            throw new Exception("Ingrese una tarjeta valida");
+        }
+        if($mes==date("m")&&$anio==("Y")){
+            throw new Exception("Ingrese una tarjeta valida");
+        }
+
+    }
+
 
 }
