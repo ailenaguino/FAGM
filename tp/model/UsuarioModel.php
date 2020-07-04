@@ -126,7 +126,43 @@ class UsuarioModel
        ");
     }
 
+    public function obtenerPassword($id){
+        return $this->connexion->query("select contrasenia from usuario where id = $id;");
+    }
 
+    public function updateNombre($id, $nombre){
+        return $this->connexion->queryInsert("UPDATE usuario
+        SET nombre='$nombre'
+        WHERE id='$id'");
+    }
 
+    public function updateUsername($id, $nombre){
+        return $this->connexion->queryInsert("UPDATE usuario
+        SET nombre_usuario='$nombre'
+        WHERE id='$id'");
+    }
 
+    public function updateEmail($id, $email){
+        return $this->connexion->queryInsert("UPDATE usuario
+        SET email='$email'
+        WHERE id='$id'");
+    }
+
+    public function updateUbicacion($id, $ubicacion){
+        return $this->connexion->queryInsert("UPDATE usuario
+        SET ubicacion='$ubicacion'
+        WHERE id='$id'");
+    }
+
+    public function updateTelefono($id, $telefono){
+        return $this->connexion->queryInsert("UPDATE usuario
+        SET telefono='$telefono'
+        WHERE id='$id'");
+    }
+
+    public function updatePassword($id, $pass){
+        return $this->connexion->queryInsert("UPDATE usuario
+        SET contrasenia='$pass'
+        WHERE id='$id'");
+    }
 }

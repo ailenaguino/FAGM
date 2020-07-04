@@ -464,4 +464,146 @@ class UsuarioController
             $this->index();
         }
     }
+
+    public function miPerfil(){
+        $data = array();
+        $data["usuario"] = $this->model->obtenerUsuario($_SESSION['id']);
+
+        echo $this->renderer->render("view/miPerfil.php", $data);
+    }
+
+    public function editarPerfil(){
+        $data = array();
+        $data["usuario"] = $this->model->obtenerUsuario($_SESSION['id']);
+
+        echo $this->renderer->render("view/editarPerfil.php", $data);
+    }
+
+    public function editarNombre(){
+        $data = array();
+        $data["usuario"] = $this->model->obtenerUsuario($_SESSION['id']);
+
+        $nombre= $_POST["nombre"];
+        $id=$_SESSION['id'];
+
+        if(ctype_alpha($nombre)){
+            $resultado= $this->model->updateNombre($id, $nombre);
+            if($resultado){
+                $data["mensajeNombre"]="Se completó la edición";
+            }else{
+                $data["mensajeNombre"]="Algo salió mal";
+            }
+        }else{
+            $data["mensajeNombre"]="Nombre incorrecto";
+        }
+
+        echo $this->renderer->render("view/editarPerfil.php", $data);
+    }
+
+    public function editarUsername(){
+        $data = array();
+        $data["usuario"] = $this->model->obtenerUsuario($_SESSION['id']);
+
+        $username= $_POST["username"];
+        $id=$_SESSION['id'];
+        $validar= $this->validarUserName($username);
+
+        if(!$validar){
+            $resultado= $this->model->updateUsername($id, $username);
+            if($resultado){
+                $data["mensajeUsername"]="Se completó la edición";
+            }else{
+                $data["mensajeUsername"]="Algo salió mal";
+            }
+        }else{
+            $data["mensajeUsername"]="El nombre de usuario ya existe";
+        }
+
+        echo $this->renderer->render("view/editarPerfil.php", $data);
+    }
+
+    public function editarEmail(){
+        $data = array();
+        $data["usuario"] = $this->model->obtenerUsuario($_SESSION['id']);
+
+        $email= $_POST["email"];
+        $id=$_SESSION['id'];
+        $validar= $this->validarEmail($email);
+
+        if(!$validar){
+            $resultado= $this->model->updateEmail($id, $email);
+            if($resultado){
+                $data["mensajeEmail"]="Se completó la edición";
+            }else{
+                $data["mensajeEmail"]="Algo salió mal";
+            }
+        }else{
+            $data["mensajeEmail"]="El email ya existe";
+        }
+
+        echo $this->renderer->render("view/editarPerfil.php", $data);
+    }
+
+    public function editarUbicacion(){
+        $data = array();
+        $data["usuario"] = $this->model->obtenerUsuario($_SESSION['id']);
+
+        $ubicacion= $_POST["ubicacion"];
+        $id=$_SESSION['id'];
+
+            $resultado= $this->model->updateUbicacion($id, $ubicacion);
+            if($resultado){
+                $data["mensajeUbicacion"]="Se completó la edición";
+            }else{
+                $data["mensajeUbicacion"]="Algo salió mal";
+            }
+
+        echo $this->renderer->render("view/editarPerfil.php", $data);
+    }
+
+    public function editarTelefono(){
+        $data = array();
+        $data["usuario"] = $this->model->obtenerUsuario($_SESSION['id']);
+
+        $telefono= $_POST["telefono"];
+        $id=$_SESSION['id'];
+
+        if(ctype_digit($telefono)){
+            $resultado= $this->model->updateTelefono($id, $telefono);
+            if($resultado){
+                $data["mensajeTelefono"]="Se completó la edición";
+            }else{
+                $data["mensajeTelefono"]="Algo salió mal";
+            }
+        }else{
+            $data["mensajeTelefono"]="Telefono incorrecto";
+        }
+
+        echo $this->renderer->render("view/editarPerfil.php", $data);
+    }
+
+    public function editarContraseña(){
+        $data = array();
+        $data["usuario"] = $this->model->obtenerUsuario($_SESSION['id']);
+
+        $passVieja= $_POST["passVieja"];
+        $pass1= $_POST["pass1"];
+        $pass2= $_POST["pass2"];
+        $id=$_SESSION['id'];
+        $validar1 = $this->model->obtenerPassword($id);
+        $validar2 = $this->validarContra($pass1, $pass2);
+
+        if($validar1[0]['contrasenia']==$passVieja && $validar2 == true){
+            $resultado= $this->model->updatePassword($id, $pass1);
+            if($resultado){
+                $data["mensajePass"]="Se completó la edición";
+            }else{
+                $data["mensajePass"]="Algo salió mal";
+            }
+        }else{
+            $data["mensajePass"]= "Contraseña incorrecta";
+        }
+
+        echo $this->renderer->render("view/editarPerfil.php", $data);
+    }
 }
