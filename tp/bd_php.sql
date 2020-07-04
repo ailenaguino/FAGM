@@ -81,9 +81,9 @@ create table ejemplar(
 
 create table usuarioSuscribeEjemplar(
 	fecha date not null,
+    fecha_vencimiento date not null,
     id_usuario integer not null,
     id_ejemplar integer not null,
-    estado_suscripcion boolean,
     primary key(id_usuario,id_ejemplar),
     foreign key(id_usuario) references usuario(id),
 	foreign key(id_ejemplar) references ejemplar(id)

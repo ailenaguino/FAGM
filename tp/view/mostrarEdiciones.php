@@ -22,7 +22,7 @@
             </form>
         </td>
         <td class="text-center">
-            <form action="" method="POST">
+            <form action="comprarEdicion" method="POST">
                 <input type="hidden" name="id" value="{{id}}">
                 <button type="submit" class="btn btn-success btn-sm">Comprar</button>
             </form>

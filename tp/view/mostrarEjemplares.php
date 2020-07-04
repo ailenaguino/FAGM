@@ -13,7 +13,7 @@
         <td class="text-center">{{categoria}}</td>
         <td class="text-center">${{precio}}</td>
         <td class="text-center">
-            <form action="" method="POST">
+            <form action="pagarSuscripcion" method="POST">
                 <input type="hidden" name="id" value="{{id}}">
                 <button type="submit" class="btn btn-success btn-sm">Suscribirse</button>
             </form>
