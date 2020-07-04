@@ -14,7 +14,9 @@
         <label>Contraseña:</label>
         <input type="password" name="password" id="" placeholder="Ingrese su contraseña" class="form-control">
         </div>
-
+        {{#mensaje}}
+            <p class="text-danger">Error al iniciar sesion</p>
+        {{/mensaje}}
         <div class="col clearfix">
             <input type="submit" value="Iniciar Sesión" class="btn btn-info float-right">
         </div>
