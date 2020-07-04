@@ -20,13 +20,23 @@ class ModuleInitializer
 
     public function createUsuarioController()
     {
+        include_once("model/NoticiaModel.php");
+        include_once("model/EdicionModel.php");
+        include_once("model/EjemplarModel.php");
+        include_once("model/SeccionModel.php");
+        include_once("model/FotoModel.php");
         include_once("model/UsuarioModel.php");
         include_once("controller/UsuarioController.php");
         include_once('pdf/fpdf.php');
         $pdf=new FPDF();
 
         $model = new UsuarioModel($this->database);
-        return new UsuarioController($model,$this->renderer,$pdf);
+        $ejemplar = new EjemplarModel($this->database);
+        $edicion = new EdicionModel($this->database);
+        $seccion = new SeccionModel($this->database);
+        $foto=new FotoModel($this->database);
+        $noticia=new NoticiaModel($this->database);
+        return new UsuarioController($model,$this->renderer,$pdf,$ejemplar,$edicion,$seccion,$foto,$noticia);
     }
 
     public function createCategoriaController(){
@@ -75,6 +85,7 @@ class ModuleInitializer
         include_once("model/EjemplarModel.php");
         include_once("model/SeccionModel.php");
         include_once("model/FotoModel.php");
+        include_once("model/UsuarioModel.php");
         include_once("controller/NoticiaController.php");
 
         $model = new NoticiaModel($this->database);
@@ -82,7 +93,8 @@ class ModuleInitializer
         $edicion = new EdicionModel($this->database);
         $seccion = new SeccionModel($this->database);
         $foto=new FotoModel($this->database);
-        return new NoticiaController($model,$this->renderer,$ejemplar,$edicion,$seccion,$foto);
+        $usuario=new UsuarioModel($this->database);
+        return new NoticiaController($model,$this->renderer,$ejemplar,$edicion,$seccion,$foto,$usuario);
     }
 
 

@@ -41,5 +41,5 @@ class SeccionModel
     public function cambiarEstado($id,$estado){
         return $this->connexion->queryInsert("UPDATE seccion SET estado= $estado WHERE id=$id");
     }
-
+    
 }

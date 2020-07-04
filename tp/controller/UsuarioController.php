@@ -5,12 +5,22 @@ class UsuarioController
 {
     private $renderer;
     private $model;
+    private $modelEjemplar;
+    private $modelEdicion;
+    private $modelSeccion;
+    private $modelFoto;
+    private $modelNoticia;
     private $pdf;
 
-    public function __construct($model,$renderer,$pdf){
+    public function __construct($model,$renderer,$pdf,$ejemplar,$edicion,$seccion,$foto,$noticia){
         $this->renderer = $renderer;
         $this->model = $model;
         $this->pdf=$pdf;
+        $this->modelEjemplar=$ejemplar;
+        $this->modelEdicion=$edicion;
+        $this->modelSeccion=$seccion;
+        $this->modelFoto=$foto;
+        $this->modelNoticia=$noticia;
     }
 
     /* Uso comun*/
@@ -72,6 +82,9 @@ class UsuarioController
                     echo  $this->renderer->render( "view/internoConte.php",$data);
                     break;
                 default:
+                    $data['direccion']=$this->modelNoticia->obtenerNoticiaGratis();
+                    $data['ejemplar']=$this->modelEjemplar->obtenerEjemplaresConSusCategorias();
+                    $data['edicion']=$this->modelEdicion->obtenerEdicionesConSuEjemplar();
                     echo  $this->renderer->render( "view/registrado.php",$data);
                     break;
             }
@@ -463,5 +476,20 @@ class UsuarioController
         }else{
             $this->index();
         }
+    }
+
+    /*Usuario*/
+    public function aQueEjemplaresEstaSuscripto(){
+        $id=$this->model->obtenerId($_SESSION['name']);
+        $id=$id[0]['id'];
+        $data["contenido"]=$this->model->obtenerSuscripcionesAEjemplares($id);
+        echo $this->renderer->render("view/ejemplaresSuscriptos.php",$data);
+    }
+
+    public function queEdicionesCompro(){
+        $id=$this->model->obtenerId($_SESSION['name']);
+        $id=$id[0]['id'];
+        $data["contenido"]=$this->model->obtenerComprasAEdiciones($id);
+        echo $this->renderer->render("view/edicionesCompradas.php",$data);
     }
 }

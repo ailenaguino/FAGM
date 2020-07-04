@@ -8,14 +8,16 @@ class NoticiaController
     private $modelEdicion;
     private $modelSeccion;
     private $modelFoto;
+    private $modelUsuario;
 
-    public function __construct($model, $renderer,$ejemplar,$edicion,$seccion,$foto){
+    public function __construct($model, $renderer,$ejemplar,$edicion,$seccion,$foto,$usuario){
         $this->renderer = $renderer;
         $this->model = $model;
         $this->modelEjemplar=$ejemplar;
         $this->modelEdicion=$edicion;
         $this->modelSeccion=$seccion;
         $this->modelFoto=$foto;
+        $this->modelUsuario=$usuario;
     }
 
     public function index(){
@@ -92,12 +94,9 @@ class NoticiaController
         $data["id_usuario"]='';
         $data["precio"]=$_POST["precio"];
 
-        foreach ($_SESSION['id'] as $id){
-            foreach ($id as $valor){
-                $data["id_usuario"]=$valor;
-            }
-        }
-
+        $id=$this->modelUsuario->obtenerId($_SESSION['name']);
+        $id=$id[0]['id'];
+        $data["id_usuario"]=$id;
        $bol=$this->model->insertar($data);
 
         if($bol!=false){
@@ -115,7 +114,10 @@ class NoticiaController
     }
 
     public function mostrarPortadaNoticia(){
-        $data['direccion']=$this->model->obtenerNoticiaGratis();
+        $id=$this->modelUsuario->obtenerId($_SESSION['name']);
+        $id=$id[0]['id'];
+        $data['direccion']=$this->model->obtenerNoticiasPagas($id);
+        $data['edicion']=$this->model->obtenerNoticiasPagasEdicion($id);
         echo $this->renderer->render("view/mostrarNoticiasGratis.php", $data);
     }
 
