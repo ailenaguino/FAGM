@@ -38,7 +38,9 @@ class UsuarioModel
     public function obtenerId($nombre_usuario){
         return $this->connexion->query("SELECT id FROM usuario WHERE nombre_usuario like '$nombre_usuario'");
     }
-
+    public function obtenerRolPorId($id){
+        return $this->connexion->query("SELECT id_rol FROM usuario WHERE id ='$id'");
+    }
     public function obtenerUsuario($id){
         return $this->connexion->query("SELECT * FROM usuario WHERE id = '$id'");
     }
