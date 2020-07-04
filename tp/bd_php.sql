@@ -157,3 +157,43 @@ create table usuarioLeeNoticia(
     foreign key(id_noticia) references noticia(id)
 );
 
+/*TODO ESTO ES PARA LOS GRAFICOS*/
+
+insert into edicion values
+('2', 'Otoñal', '2', '1', true, 3.00),
+(3, 'Oscars', 2020, 2, true, 50.00);
+
+insert into usuariocompraedicion values
+(1, 3, '2020-06-20'),
+(3, 1, '2020-08-20'),
+(3, 3, '2020-07-20'),
+(3, 2, '2020-02-20');
+
+insert into usuariocompraedicion values
+(2, 1, '2020-08-20');
+
+insert into ejemplar values
+(3, 'TKM', 2, true, 50.0);
+
+insert into usuariosuscribeejemplar values
+('2020-06-20', 3, 1, true),
+('2020-06-21', 3, 2, true),
+('2020-06-20', 2, 3, true);
+
+/*grafico de torta*/
+select edicion.nombre, count(uce.id_edicion) as cantidad
+from edicion join usuariocompraedicion as uce on edicion.id=uce.id_edicion
+where fecha between '2020-05-20' and '2020-09-20'
+group by uce.id_edicion;
+
+/*Grafico de Susc Barras*/
+select count(susc.id_ejemplar) as cantidad, susc.fecha as dia
+from usuariosuscribeejemplar as susc
+where fecha between '2020-06-20' and '2020-06-22'
+group by fecha;
+
+/*Grafico de Ventas Barras*/
+select count(uce.id_edicion) as cantidad, uce.fecha as dia
+from usuariocompraedicion as uce
+where fecha between '2020-05-20' and '2020-09-20'
+group by fecha;
