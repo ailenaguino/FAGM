@@ -133,4 +133,92 @@ class EdicionController
         $data['edicion']=$this->model->obtenerEdicionesConSuEjemplar();
         echo $this->renderer->render("view/mostrarEdiciones.php", $data);
     }
+
+    public function generarGrafico(){
+        $data = array();
+        $data["inicio"]=$_POST["inicio"];
+        $data["fin"]=$_POST["fin"];
+        $resultado = $this->model->generarGraficoTorta($data);
+
+        echo $this->renderer->render("view/generarGraficoTorta.php");
+        ?>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+                google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
+
+          function drawChart() {
+
+              var data = google.visualization.arrayToDataTable([
+                      ['Producto', 'Cantidad Vendida'],
+                      <?php
+                  while($fila = $resultado->fetch_assoc()){
+                      echo "['".$fila["nombre"]."',".$fila["cantidad"]."],";
+                  }
+                        ?>
+                  ]);
+
+              var options = {
+                  title: 'Cantidad de productos vendidos en un periodo de tiempo'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+          }
+        </script>
+    <?php
+    }
+
+    public function formularioGraficoTorta(){
+        echo $this->renderer->render("view/generarGraficoTorta.php");
+    }
+
+    public function generarGraficoBarras(){
+        $data = array();
+        $data["inicio"]=$_POST["inicio"];
+        $data["fin"]=$_POST["fin"];
+        $resultado = $this->model->generarGraficoBarras($data);
+
+        echo $this->renderer->render("view/generarGraficoVentas.php");
+        ?>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['bar']});
+            google.charts.setOnLoadCallback(drawStuff);
+
+            function drawStuff() {
+                var data = new google.visualization.arrayToDataTable([
+                    ['Fecha', 'Cantidad de Ventas'],
+                    <?php
+                    while($fila = $resultado->fetch_assoc()){
+                        echo "['".$fila["dia"]."',".$fila["cantidad"]."],";
+                    }
+                    ?>
+                ]);
+
+                var options = {
+                    width: 800,
+                    legend: { position: 'none' },
+                    chart: {
+                        title: 'Cantidad de Ventas por día'},
+                    axes: {
+                        x: {
+                            0: { side: 'top', label: 'Fecha'} // Top x-axis.
+                        }
+                    },
+                    bar: { groupWidth: "90%" }
+                };
+
+                var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+                // Convert the Classic options to Material options.
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+            };
+        </script>
+        <?php
+    }
+
+    public function formularioGraficoBarras(){
+        echo $this->renderer->render("view/generarGraficoVentas.php");
+    }
 }

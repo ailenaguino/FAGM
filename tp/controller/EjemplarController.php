@@ -100,4 +100,51 @@ class EjemplarController
         echo $this->renderer->render("view/mostrarEjemplares.php", $data);
     }
 
+    public function generarGraficoSuscripciones(){
+        $data = array();
+        $data["inicio"]=$_POST["inicio"];
+        $data["fin"]=$_POST["fin"];
+        $resultado = $this->model->generarGraficoSuscripciones($data);
+
+        echo $this->renderer->render("view/generarGraficoSuscripciones.php");
+        ?>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['bar']});
+            google.charts.setOnLoadCallback(drawStuff);
+
+            function drawStuff() {
+                var data = new google.visualization.arrayToDataTable([
+                    ['Fecha', 'Cantidad de Suscripciones'],
+                <?php
+                while($fila = $resultado->fetch_assoc()){
+                    echo "['".$fila["dia"]."',".$fila["cantidad"]."],";
+                }
+                    ?>
+                ]);
+
+                var options = {
+                    width: 800,
+                    legend: { position: 'none' },
+                    chart: {
+                        title: 'Cantidad de suscripciones por día'},
+                    axes: {
+                        x: {
+                            0: { side: 'top', label: 'Fecha'} // Top x-axis.
+                        }
+                    },
+                    bar: { groupWidth: "90%" }
+                };
+
+                var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+                // Convert the Classic options to Material options.
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+            };
+        </script>
+        <?php
+    }
+
+    public function formularioGraficoSuscripciones(){
+        echo $this->renderer->render("view/generarGraficoSuscripciones.php");
+    }
 }

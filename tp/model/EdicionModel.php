@@ -66,4 +66,22 @@ class EdicionModel
     public function cambiarEstado($id,$estado){
         return $this->connexion->queryInsert("UPDATE edicion SET estado= $estado WHERE id=$id");
     }
+
+    public function generarGraficoTorta($data){
+        $inicio = $data["inicio"];
+        $fin = $data["fin"];
+        return $this->connexion->queryInsert("select edicion.nombre, count(uce.id_edicion) as cantidad
+                                        from edicion join usuariocompraedicion as uce on edicion.id=uce.id_edicion
+                                        where fecha between '$inicio' and '$fin'
+                                        group by uce.id_edicion;");
+    }
+
+    public function generarGraficoBarras($data){
+        $inicio = $data["inicio"];
+        $fin = $data["fin"];
+        return $this->connexion->queryInsert("select count(uce.id_edicion) as cantidad, uce.fecha as dia
+                                                from usuariocompraedicion as uce
+                                                where fecha between '$inicio' and '$fin'
+                                                group by fecha;");
+    }
 }

@@ -110,6 +110,7 @@ create table seccion(
 create table usuarioCompraEdicion(
 	id_usuario integer not null, 
     id_edicion integer not null,
+    fecha date not null,
     primary key(id_usuario,id_edicion),
     foreign key(id_usuario) references usuario(id),
     foreign key(id_edicion) references edicion(id)

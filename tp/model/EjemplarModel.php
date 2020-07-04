@@ -50,4 +50,13 @@ class EjemplarModel
     {
         return $this->connexion->queryInsert("UPDATE ejemplar SET estado= $estado WHERE id=$id");
     }
+
+    public function generarGraficoSuscripciones($data){
+        $inicio = $data["inicio"];
+        $fin = $data["fin"];
+        return $this->connexion->queryInsert("select count(susc.id_ejemplar) as cantidad, susc.fecha as dia
+                                                from usuariosuscribeejemplar as susc
+                                                where fecha between '$inicio' and '$fin'
+                                                group by fecha;");
+    }
 }
