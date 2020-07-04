@@ -158,6 +158,26 @@ class UsuarioModel
         return $this->connexion->queryInsert("UPDATE usuario
         SET telefono='$telefono'
         WHERE id='$id'");
+        }
+
+    public function obtenerSuscripcionesAEjemplares($id){
+        return $this->connexion->query("select e.nombre, se.fecha, e.precio from usuario as u
+                                        inner join usuariosuscribeejemplar as se
+                                        on $id = se.id_usuario
+                                        inner join ejemplar as e
+                                        on e.id = se.id_ejemplar
+                                        where se.estado_suscripcion = '1'
+                                        group by e.nombre");
+    }
+
+    public function obtenerComprasAEdiciones($id){
+        return $this->connexion->query("select e.nombre, ce.fecha, e.precio from usuario as u
+                                            inner join usuariocompraedicion as ce
+                                            on $id = ce.id_usuario
+                                            inner join edicion as e
+                                            on e.id = ce.id_edicion
+                                            group by e.nombre");
+
     }
 
     public function updatePassword($id, $pass){

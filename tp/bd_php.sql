@@ -11,14 +11,15 @@ select * from usuario;
 select * from ejemplar;
 insert into ejemplar values(3,"La nacion",1,1,100);
 
-select * from noticia;
-select * from usuariosuscribeejemplar;
+select * from usuariocompraedicion;
+delete from usuariocompraedicion
+where id_edicion = "2";
 insert into usuariosuscribeejemplar values('2020-06-12',3,2,1); 
 insert into usuariosuscribeejemplar values('2020-06-13',3,1,1); 
 insert into usuariosuscribeejemplar values('2020-06-12',3,3,1); 
 insert into usuariosuscribeejemplar values('2020-06-13',3,1,1); 
 
-insert into usuariocompraedicion values(3,1);
+insert into usuariocompraedicion values(3,2,'2020-07-12');
 
 select e.nombre,e.precio,e.numero,u.nombre from usuariocompraedicion as ue
 inner join edicion as e
@@ -27,6 +28,22 @@ inner join usuario as u
 on u.id=ue.id_usuario
 where u.id=3
 ;
+select * from usuariocompraedicion;
+select n.id,n.titulo,n.subtitulo, f.direccion from usuario as u 
+inner join usuariocompraedicion as ce
+on u.id = ce.id_usuario
+inner join edicion as ed
+on ce.id_edicion = ed.id
+inner join edicionposeeseccion as eps
+on ed.id = eps.id_edicion
+inner join seccion as s
+on eps.id_seccion = s.id
+inner join noticia as n
+on s.id = n.id_seccion
+inner join foto as f
+on n.id = f.id_noticia
+where n.estado = '1'
+group by n.id;
 
 select u.nombre,u.telefono,e.nombre,e.precio,s.fecha from usuariosuscribeejemplar as s
 inner join ejemplar as e on s.id_ejemplar = e.id
@@ -44,7 +61,7 @@ insert into usuario values('2',"ale","ale","1234","19990101","ale@gmail.com",111
 insert into usuario values('3',"marcos","marcos","1234","19990101","marcos@gmail.com",11111,"san justo",1);
 
 insert into categoria values('1','diario'),('2','revista');
-select * from noticia;
+select * from usuario;
 insert into noticia values('5', 'paga', 'hola.com', 'hola', 'contenido', 'subtitulo', 'pagaa', '1', '2','3', false);
 
 create table usuario(
