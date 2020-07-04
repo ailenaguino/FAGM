@@ -43,16 +43,10 @@ class UsuarioController
 
                 $sesion["sesion"]=$_SESSION;
 
-                if($_SESSION["rol"]==2){
-                    echo $this->renderer->render("view/vistaAdmin.php",$sesion);
-                }elseif($_SESSION["rol"]==1){
-                    echo $this->renderer->render( "view/registrado.php",$sesion );
-                }else{
-                    echo $this->renderer->render( "view/internoConte.php",$sesion );
-                }
+                $this->index();
             }else{
-                $mensaje="Campos incorrectos";
-                echo $this->renderer->render( "view/loginUsuario.php");
+                $mensaje["mensaje"]="Campos incorrectos";
+                echo $this->renderer->render( "view/loginUsuario.php",$mensaje);
             }
         }else{
             $this->index();
