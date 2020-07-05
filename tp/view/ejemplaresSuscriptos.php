@@ -1,5 +1,6 @@
 {{> headerLogeado}}
-<table class="table table-striped table-bordered ">
+<h4 class="mt-4">Mis suscripciones</h4>
+<table class="table table-striped table-bordered mt-4">
     <tr>
         <th class="text-center">Ejemplar</th>
         <th class="text-center">Fecha de suscripcion</th>
@@ -16,8 +17,7 @@
 
     {{/contenido}}
 </table>
-<div class="text-center" style="max-width:800px" id="band">
-    <br>
-    <a class="btn btn-primary btn-lg active text-center" role="button" aria-pressed="true" target="_blank" href="/usuario/generarResumenDeSuscripciones">Generar resumen</a>
-</div>
+
+<a class="mt-4 btn btn-primary btn-lg active text-center" role="button" aria-pressed="true" target="_blank" href="/usuario/generarResumenDeSuscripciones">Generar resumen</a>
+
 {{> footer}}

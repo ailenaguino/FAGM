@@ -1,19 +1,40 @@
 {{> headerLogeado}}
 
     <br>
-    <h1 class="text-center ">Noticias gratis</h1>
-    <br>
-    <div class="row mt-5 ">
+
+    {{#ultima}}
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h1 class="display-4 bg-danger text-white font-weight-bold">{{titulo}}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <img src="/images/{{direccion}}" class="img-fluid" width="100%">
+                <blockquote class="blockquote text-right bg-light" style="position:relative;bottom: 10%;">
+                    <p class="mb-0">{{subtitulo}}</p>
+                    <footer class="blockquote-footer">Escrito por <cite title="Source Title" class="text-capitalize">{{nombre}}</cite></footer>
+                    <button class="mb-0 text-left btn btn-danger">Leer</button>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+{{/ultima}}
+
+<h3 class="text-center display-4">Noticias gratis</h3>
+
+    <div class="row mt-5">
         {{#direccion}}
-        <div class="col-md-4 ">
-            <div class="card" style="width: 14rem;">
-                <img src="/images/{{direccion}}" class="card-img-top" alt="...">
+        <div class="col-md-4 mt-3">
+            <div class="card" style="width: 100%; height: 100%;">
+                <img src="/images/{{direccion}}" class="card-img-top" alt="..." style="height: 14rem;">
                 <div class="card-body">
-                    <h5 class="card-title text-center">{{titulo}}</h5>
-                    <p class="card-text">{{subtitulo}}<p>
+                    <h5 class="card-title">{{titulo}}</h5>
+                    <p class="card-text">{{subtitulo}}</p>
                     <form action="/noticia/verNoticiaCompleta" method="POST">
                         <input type="hidden" name="id" value="{{id}}">
-                        <button type="submit" class="btn btn-primary btn-block">Ver noticia</button>
+                        <button type="submit" class="btn btn-primary btn-block">Leer noticia</button>
                     </form>
                 </div>
             </div>
@@ -21,9 +42,24 @@
         {{/direccion}}
     </div>
 <br>
-
     <h4 class="text-center display-4 text-danger ">Contenido premium</h4>
-    <br><br><br><br>
+<div class="row mt-5">
+    {{#premium}}
+    <div class="col-md-4 mt-3">
+        <div class="card" style="width: 100%; height: 100%;">
+            <img src="/images/{{direccion}}" class="card-img-top" alt="..." style="height: 14rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{titulo}}</h5>
+                <p class="card-text">{{subtitulo}}</p>
+                <form action="/noticia/verNoticiaCompleta" method="POST">
+                    <input type="hidden" name="id" value="{{id}}">
+                    <button type="submit" class="btn btn-primary btn-block">Leer noticia</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/premium}}
+</div>
 
     <h1 class="text-center ">Ejemplares</h1>
 <br>
