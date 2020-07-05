@@ -82,6 +82,8 @@ class UsuarioController
                     echo  $this->renderer->render( "view/internoConte.php",$data);
                     break;
                 default:
+                    $data['ultima']=$this->modelNoticia->obtenerUltimaNoticia();
+                    $data['premium']=$this->modelNoticia->obtenerNoticiasPremium();
                     $data['direccion']=$this->modelNoticia->obtenerNoticiaGratis();
                     $data['ejemplar']=$this->modelEjemplar->obtenerEjemplaresConSusCategorias();
                     $data['edicion']=$this->modelEdicion->obtenerEdicionesConSuEjemplar();

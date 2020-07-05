@@ -15,8 +15,28 @@ class NoticiaModel
         return $this->connexion->query("select n.id,n.titulo,n.subtitulo, f.direccion from foto as f
                                         inner join noticia as n
                                         on f.id_noticia=n.id
-                                        where n.estado = '1' and n.precio in (0,0.0,0.00)
+                                        where n.estado = 1
+                                        and n.precio in (0,0.0,0.00)
                                         group by n.id");
+    }
+    public function obtenerNoticiasPremium(){
+        return $this->connexion->query("select n.id,n.titulo,n.subtitulo, f.direccion from foto as f
+                                        inner join noticia as n
+                                        on f.id_noticia=n.id
+                                        where n.estado = 1
+                                        and n.precio not in (0,0.0,0.00)
+                                        group by n.id");
+    }
+    public function obtenerUltimaNoticia(){
+        return $this->connexion->query("select n.id,f.direccion,n.titulo,n.subtitulo,n.ubicacion,u.nombre from noticia as n
+        inner join foto as f
+        on f.id_noticia = n.id
+        inner join usuario as u
+        on u.id = n.id_usuario
+        where n.id in(
+            select max(id) from noticia
+            where estado=1
+            and precio in (0,0.0,0.00) );");
     }
     public function obtenerNoticia($id){
         return $this->connexion->query("SELECT * FROM noticia where id = '$id'");
