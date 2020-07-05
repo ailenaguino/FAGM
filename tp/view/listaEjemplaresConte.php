@@ -2,7 +2,7 @@
 
 <div class="form-group mt-5">
     <h2>Ejemplares</h2>
-    <a href="/ejemplar/index">Crear nuevo Ejemplar</a>
+    <a href="/ejemplar/index" class="btn btn-outline-primary mb-3 float-right">Crear nuevo Ejemplar</a>
 
     <table class="table table-bordered">
         <thead class="thead-dark">
@@ -24,10 +24,10 @@
                     <input type="hidden" name="estado" value="{{estado}}">
                     <input type="hidden" name="id" value="{{id}}" >
                     {{#estado}}
-                    <button type="submit" class="btn btn-success btn-sm">Activo</button>
+                    <button type="submit" class="btn btn-success btn-sm" disabled>Activo</button>
                     {{/estado}}
                     {{^estado}}
-                    <button type="submit" class="btn btn-warning btn-sm">Inactivo</button>
+                    <button type="submit" class="btn btn-warning btn-sm" disabled>Inactivo</button>
                     {{/estado}}
                 </form>
             </td>

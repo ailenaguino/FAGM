@@ -2,7 +2,7 @@
 
 <div class="form-group mt-5">
     <h2>Ediciones</h2>
-    <a href="/edicion/index">Crear nueva Edición</a>
+    <a href="/edicion/index" class="btn btn-outline-primary mb-3 float-right">Crear nueva Edición</a>
 
     <table class="table table-bordered">
         <thead class="thead-dark">

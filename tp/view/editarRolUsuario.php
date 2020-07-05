@@ -6,8 +6,7 @@
     <h2 class="text-center">Buscar usuario</h2>
 
 
-    <a href="/usuario/registroDelAdmin">Agregar un nuevo usuario</a><br><br>
-    <a href="/usuario/login" class="text-danger mt-3 ">Volver</a>
+    <a href="/usuario/registroDelAdmin" class="btn btn-outline-primary my-3 float-right">Agregar un nuevo usuario</a>
 
     <table class="table table-bordered my-5" >
         <thead>
@@ -49,7 +48,7 @@
         </tbody>
 
     </table>
-
+    <a href="/usuario/login" class="btn btn-outline-danger my-3 ml-3">Volver</a>
 </div>
 
 {{> footer}}

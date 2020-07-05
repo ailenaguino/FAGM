@@ -36,5 +36,7 @@
                 </div>
             </div>
         </div>
+        <hr/>
+        <a href="/usuario/index" class="btn btn-outline-danger ml-3">Volver</a>
     </div>
 {{> footer}}

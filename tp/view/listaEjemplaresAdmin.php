@@ -2,7 +2,7 @@
 
 <div class="form-group mt-5">
     <h2>Ejemplares</h2>
-    <a href="/ejemplar/index">Crear nuevo Ejemplar</a>
+    <a href="/ejemplar/index" class="btn btn-outline-primary mb-3 float-right">Crear nuevo Ejemplar</a>
 
     <table class="table table-bordered">
         <thead class="thead-dark">

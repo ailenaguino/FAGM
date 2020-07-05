@@ -2,7 +2,7 @@
 
 <div class="form-group">
     <h2>Noticias</h2>
-    <a href="/noticia/index">Crear nueva Noticia</a>
+    <a href="/noticia/index"  class="btn btn-outline-primary mb-3 float-right">Crear nueva Noticia</a>
 
     <table class="table table-bordered">
         <thead class="thead-dark">

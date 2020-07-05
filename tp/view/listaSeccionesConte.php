@@ -2,7 +2,7 @@
 
 <div class="form-group mt-5">
     <h2>Secciones</h2>
-    <a href="/seccion/index">Crear nueva Sección</a>
+    <a href="/seccion/index" class="btn btn-outline-primary mb-3 float-right">Crear nueva Sección</a>
 
     <table class="table table-bordered">
         <thead class="thead-dark">
@@ -22,10 +22,10 @@
                     <input type="hidden" name="estado" value="{{estado}}">
                     <input type="hidden" name="id" value="{{id}}" >
                     {{#estado}}
-                    <button type="submit" class="btn btn-success btn-sm">Activo</button>
+                    <button type="submit" class="btn btn-success btn-sm" disabled>Activo</button>
                     {{/estado}}
                     {{^estado}}
-                    <button type="submit" class="btn btn-warning btn-sm">Inactivo</button>
+                    <button type="submit" class="btn btn-warning btn-sm" disabled>Inactivo</button>
                     {{/estado}}
                 </form>
             </td>

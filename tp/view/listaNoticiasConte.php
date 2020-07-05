@@ -2,7 +2,7 @@
 
 <div class="form-group">
     <h2>Noticias</h2>
-    <a href="/noticia/index">Crear nueva Noticia</a>
+    <a href="/noticia/index" class="btn btn-outline-primary mb-3 float-right">Crear nueva Noticia</a>
 
     <table class="table table-bordered">
         <thead class="thead-dark">
@@ -26,10 +26,10 @@
                         <input type="hidden" name="estado" value="{{estado}}">
                         <input type="hidden" name="id" value="{{id}}" >
                         {{#estado}}
-                        <button type="submit" class="btn btn-success btn-sm">Activo</button>
+                        <button type="submit" class="btn btn-success btn-sm" disabled>Activo</button>
                         {{/estado}}
                         {{^estado}}
-                        <button type="submit" class="btn btn-warning btn-sm">Inactivo</button>
+                        <button type="submit" class="btn btn-warning btn-sm" disabled>Inactivo</button>
                         {{/estado}}
                     </form>
                 </td>
