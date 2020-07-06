@@ -88,4 +88,13 @@ class EdicionModel
     public function insertarCompra($idEdicion,$idUsuario,$fecha){
         return $this->connexion->queryInsert("INSERT INTO usuariocompraedicion (id_usuario,id_edicion,fecha) VALUES($idUsuario,$idEdicion,'$fecha')");
     }
+    public function obtenerComprasAEdiciones($id){
+        return $this->connexion->query("select e.id,e.nombre, ce.fecha, e.precio from usuario as u
+                                            inner join usuariocompraedicion as ce
+                                            on $id = ce.id_usuario
+                                            inner join edicion as e
+                                            on e.id = ce.id_edicion
+                                            group by e.nombre");
+
+    }
 }

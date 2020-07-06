@@ -8,6 +8,7 @@
     <tr>
         <td class="text-center">{{nombre}}</td>
     {{/secciones}}
+
 </table>
 <a href="/usuario/index" class="btn btn-outline-danger my-3 ml-3">Volver</a>
 {{> footer}}

@@ -87,6 +87,8 @@ class UsuarioController
                     $data['direccion']=$this->modelNoticia->obtenerNoticiaGratis();
                     $data['ejemplar']=$this->modelEjemplar->obtenerEjemplaresConSusCategorias();
                     $data['edicion']=$this->modelEdicion->obtenerEdicionesConSuEjemplar();
+
+
                     echo  $this->renderer->render( "view/registrado.php",$data);
                     break;
             }
@@ -636,6 +638,66 @@ class UsuarioController
         $id=$id[0]['id'];
         $data["contenido"]=$this->model->obtenerComprasAEdiciones($id);
         echo $this->renderer->render("view/edicionesCompradas.php",$data);
+
+    }
+    public function obtenerEdicionesSinComprar(){
+        $usuario=$_SESSION['id'];
+        $ediciones=$this->modelEdicion->obtenerEdiciones();
+        $ejemplares=$this->modelEjemplar->obtenerEjemplares();
+        $compradas=$this->modelEdicion->obtenerComprasAEdiciones($usuario);
+        $suscritas=$this->model->obtenerSuscripcionesAEjemplares($usuario);
+
+        $arrayAuxNoCompradas=array();
+        $arrayAuxNoSuscritas=array();
+
+        foreach($ediciones as $v){
+            foreach($compradas as $c){
+                if($v['id']!=$c['id']){
+                    array_push($arrayAuxNoCompradas,$v);
+                }
+            }
+        }
+    print_r($arrayAuxNoCompradas);
+
+
+
+        foreach($ejemplares as $v){
+            foreach($suscritas as $c){
+                if($v['id']!=$c['id']){
+                    array_push($arrayAuxNoSuscritas,$v);
+                }
+            }
+        }
+    $arrayFinal=array();
+
+        foreach($arrayAuxNoCompradas as $c) {
+            foreach ($arrayAuxNoSuscritas as $s) {
+                if ($c['id_ejemplar'] != $s['id']) {
+                    array_push($arrayFinal, $c);
+                }
+            }
+        }
+
+$noticias=array();
+            foreach($arrayAuxNoCompradas as $c){
+                $noticia=$this->modelNoticia->obtenerNoticiaPorEdicion($c['id']);
+                array_push($noticias, $noticia);
+            }
+
+    }
+
+    public function validarLecturaPremium(){
+        $id_noticia=$_POST['id'];
+        $id=$_SESSION['id'];
+        $result=$this->modelNoticia->obtenerNoticiasSuscritasOCompradas($id,$id_noticia);
+
+        if($result){
+            $result["noticia"]=$this->modelNoticia->obtenerNoticia($result[0]['id']);
+            $result["fotos"]=$this->modelFoto->obtenerFoto($result[0]['id']);
+            echo $this->renderer->render("view/verNoticiaCompleta.php",$result);
+        }else{
+            echo "compra rata";
+        }
 
     }
 }

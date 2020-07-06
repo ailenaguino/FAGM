@@ -8,7 +8,9 @@
             <option value="{{id_seccion}}">{{nombre}} {{id_seccion}}</option>
             {{/sesion}}
         </select>
-
+        {{#id_edicion}}
+            <input type="hidden" name="id_edicion" value="{{id_edicion}}">
+        {{/id_edicion}}
         <button class="btn btn-outline-info my-3">Confirmar seccion</button>
         <a href="/noticia/index" class="btn btn-outline-danger my-3 ml-3">Volver</a>
     </form>

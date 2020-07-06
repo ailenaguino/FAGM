@@ -259,4 +259,19 @@ class EdicionController
         }
 
     }
+    public function obtenerEdicionesSinComprar(){
+        $usuario=$_SESSION['id'];
+        $ediciones=$this->model->obtenerEdiciones();
+        $compradas=$this->model->obtenerComprasAEdiciones($usuario);
+        $arrayAux=array();
+
+        foreach($ediciones as $v){
+            foreach($compradas as $c){
+                if($v['id']!=$c['id']){
+                    array_push($arrayAux,$v);
+                }
+            }
+        }
+        return $arrayAux;
+    }
 }

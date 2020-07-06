@@ -161,7 +161,7 @@ class UsuarioModel
         }
 
     public function obtenerSuscripcionesAEjemplares($id){
-        return $this->connexion->query("select e.nombre, se.fecha, e.precio from usuario as u
+        return $this->connexion->query("select e.id,e.nombre, se.fecha, e.precio from usuario as u
                                         inner join usuariosuscribeejemplar as se
                                         on $id = se.id_usuario
                                         inner join ejemplar as e

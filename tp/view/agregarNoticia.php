@@ -57,6 +57,9 @@
         <input type="hidden" name="seccion" value={{id}}>
     {{/id}}
 
+    {{#id_edicion}}
+        <input type="hidden" name="id_edicion" value="{{id_edicion}}">
+    {{/id_edicion}}
 
     <script>
         const cordsRecomida={
