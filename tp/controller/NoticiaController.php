@@ -39,6 +39,7 @@ class NoticiaController
         if(isset($_POST['edicion'])){
             $id=$_POST["edicion"];
             $resultados["sesion"]=$this->modelSeccion->obtenerSeccionesPorEdicion($id);
+            $resultados["id_edicion"]=$id;
             echo $this->renderer->render("view/elegirSeccion.php",$resultados);
         }else{
             echo $this->index();
@@ -48,6 +49,7 @@ class NoticiaController
     public function crearNoticia(){
         if(isset($_POST['seccion'])){
             $data['id']=$_POST['seccion'];
+            $data["id_edicion"]=$_POST['id_edicion'];
             echo $this->renderer->render("view/agregarNoticia.php",$data);
         }else{
             echo $this->index();
@@ -93,10 +95,12 @@ class NoticiaController
         $data["id_seccion"]=$_POST["seccion"];
         $data["id_usuario"]='';
         $data["precio"]=$_POST["precio"];
+        $data["id_edicion"]=$_POST['id_edicion'];
 
         $id=$this->modelUsuario->obtenerId($_SESSION['name']);
         $id=$id[0]['id'];
         $data["id_usuario"]=$id;
+
        $bol=$this->model->insertar($data);
 
         if($bol!=false){

@@ -29,9 +29,9 @@ class EjemplarModel
 
     public function obtenerEjemplaresConSusCategorias(){
         return $this->connexion->query("select  ejemplar.nombre as ejemplar,categoria.nombre as categoria, ejemplar.precio, ejemplar.id from ejemplar
-                                            inner join categoria
-                                            on categoria.id = ejemplar.id_categoria
-                                            where ejemplar.estado = '1'");
+        inner join categoria
+        on categoria.id = ejemplar.id_categoria
+        where ejemplar.estado = '1'");
     }
 
     public function obtenerEjemplarPorId($id){
@@ -61,6 +61,6 @@ class EjemplarModel
     }
 
     public function insertarCompra($idEjemplar,$idUsuario,$fecha,$vencimiento){
-        return $this->connexion->queryInsert("INSERT INTO usuariosuscribeejemplar (id_usuario,id_ejemplar,fecha,fecha_vencimiento) VALUES($idUsuario,$idEjemplar,'$fecha','$vencimiento')");
+        return $this->connexion->queryInsert("INSERT INTO usuariosuscribeejemplar (id_usuario,id_ejemplar,fecha,estado_suscripcion,fecha_vencimiento) VALUES('$idUsuario','$idEjemplar','$fecha',true,'$vencimiento')");
     }
 }

@@ -51,7 +51,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{titulo}}</h5>
                 <p class="card-text">{{subtitulo}}</p>
-                <form action="/noticia/verNoticiaCompleta" method="POST">
+                <form action="/usuario/validarLecturaPremium" method="POST">
                     <input type="hidden" name="id" value="{{id}}">
                     <button type="submit" class="btn btn-primary btn-block">Leer noticia</button>
                 </form>
@@ -61,7 +61,7 @@
     {{/premium}}
 </div>
 
-    <h1 class="text-center ">Ejemplares</h1>
+    <h2 class="text-center my-3">Los diarios y revistas mas consumidos de Argentina</h2>
 <br>
 
 <div class="row mt-5 ">
@@ -83,7 +83,7 @@
     {{/ejemplar}}
 </div>
 
-<h1 class="text-center ">Ediciones</h1>
+<h2 class="text-center my-3">Las ultimas ediciones</h2>
 
 <div class="row mt-5 ">
     {{#edicion}}
