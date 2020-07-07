@@ -112,22 +112,41 @@ class NoticiaController
         }
     }
     public function mostrarNoticia($id){
-        $data['id']=$this->model->obtenerNoticia($id);
-        $data['direccion']=$this->modelFoto->obtenerFoto($id);
-        echo $this->renderer->render("view/elegirMasFotos.php", $data);
+        if($_SESSION['name']){
+            if($_SESSION['rol']!=1){
+                $data['id']=$this->model->obtenerNoticia($id);
+                $data['direccion']=$this->modelFoto->obtenerFoto($id);
+                echo $this->renderer->render("view/elegirMasFotos.php", $data);
+            }else{
+                header("Location:/usuario/index");
+            }
+        }else{
+            header("Location:/usuario/index");
+        }
     }
 
     public function mostrarPortadaNoticia(){
-        $id=$this->modelUsuario->obtenerId($_SESSION['name']);
-        $id=$id[0]['id'];
-        $data['direccion']=$this->model->obtenerNoticiasPagas($id);
-        $data['edicion']=$this->model->obtenerNoticiasPagasEdicion($id);
-        echo $this->renderer->render("view/mostrarNoticiasGratis.php", $data);
+        if($_SESSION['name']){
+            $id=$this->modelUsuario->obtenerId($_SESSION['name']);
+            $id=$id[0]['id'];
+            $data['direccion']=$this->model->obtenerNoticiasPagas($id);
+            $data['edicion']=$this->model->obtenerNoticiasPagasEdicion($id);
+            echo $this->renderer->render("view/mostrarNoticiasGratis.php", $data);
+        }else{
+            header("Location:/usuario/index");
+        }
+
     }
 
     public function verNoticiaCompleta(){
         $data['noticia']=$this->model->obtenerNoticia($_POST["id"]);
         $data['fotos']=$this->modelFoto->obtenerFoto($_POST["id"]);
+
+        if(isset($_SESSION['name'])){
+            $data['sesion']=true;
+        }else{
+            $data['sesion']=false;
+        }
         echo $this->renderer->render("view/verNoticiaCompleta.php", $data);
     }
 
@@ -135,21 +154,22 @@ class NoticiaController
         $nombre_img = $_FILES['file']['name'];
         $tmp_name=$_FILES["file"]["tmp_name"];
         $error=$_FILES["file"]["error"];
-        if(!$error>0){
-            if(file_exists("images/" . $nombre_img)){
-                echo "El archivo con el nombre ".$nombre_img . " ya existe. ";
-            }else{
-                move_uploaded_file($tmp_name,"images/" . $nombre_img);
-                $insertar = $this->modelFoto->guardarImagen($nombre_img,$_POST['id']);
-                if($insertar){
-                    $img=$this->modelFoto->ultimaFoto();
-                    $this->mostrarNoticia($_POST['id']);
+            if(!$error>0){
+                if(file_exists("images/" . $nombre_img)){
+                    echo "El archivo con el nombre ".$nombre_img . " ya existe. ";
                 }else{
-                    echo "Ha fallado la subida, reintente nuevamente.";
-                }
+                    move_uploaded_file($tmp_name,"images/" . $nombre_img);
+                    $insertar = $this->modelFoto->guardarImagen($nombre_img,$_POST['id']);
+                    if($insertar){
+                        $img=$this->modelFoto->ultimaFoto();
+                        $this->mostrarNoticia($_POST['id']);
+                    }else{
+                        echo "Ha fallado la subida, reintente nuevamente.";
+                    }
 
+                }
             }
-        }
+
 
     }
 

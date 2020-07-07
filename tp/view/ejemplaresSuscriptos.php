@@ -5,6 +5,7 @@
         <th class="text-center">Ejemplar</th>
         <th class="text-center">Fecha de suscripcion</th>
         <th class="text-center">Precio</th>
+        <th class="text-center">Fecha de vencimiento</th>
     </tr>
     {{#contenido}}
 
@@ -12,6 +13,7 @@
     <td class="text-center">{{nombre}}</td>
     <td class="text-center">{{fecha}}</td>
     <td class="text-center">${{precio}}</td>
+    <td class="text-center">{{fecha_vencimiento}}</td>
 
     </tr>
 

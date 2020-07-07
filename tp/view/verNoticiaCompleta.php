@@ -1,5 +1,10 @@
-{{> headerLogeado}}
-<div class="conteiner">
+{{#sesion}}
+    {{> headerLogeado}}
+{{/sesion}}
+{{^sesion}}
+ {{> header}}
+{{/sesion}}
+<div class="container">
     {{#noticia}}
         <h1 class="text-center">{{titulo}}</h1>
         <a class="float-right">{{ubicacion}}</a>

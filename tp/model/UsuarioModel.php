@@ -73,7 +73,7 @@ class UsuarioModel
     }
     public function obtenerSuscripciones($username){
         return $this->connexion->query("select u.nombre as 'nombre',u.telefono as 'telefono',
-        e.nombre as 'ejemplar',e.precio as 'precio',s.fecha as 'fecha' from usuariosuscribeejemplar as s
+        e.nombre as 'ejemplar',e.precio as 'precio',s.fecha as 'fecha', s.fecha_vencimiento as 'vencimiento' from usuariosuscribeejemplar as s
         inner join ejemplar as e on s.id_ejemplar = e.id
         inner join usuario as u on s.id_usuario = u.id
         where u.nombre_usuario='$username'     
@@ -161,7 +161,7 @@ class UsuarioModel
         }
 
     public function obtenerSuscripcionesAEjemplares($id){
-        return $this->connexion->query("select e.id,e.nombre, se.fecha, e.precio from usuario as u
+        return $this->connexion->query("select e.id,e.nombre, se.fecha, e.precio,se.fecha_vencimiento from usuario as u
                                         inner join usuariosuscribeejemplar as se
                                         on $id = se.id_usuario
                                         inner join ejemplar as e

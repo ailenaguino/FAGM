@@ -5,13 +5,6 @@
 
 <form method="POST" enctype="multipart/form-data" action="/noticia/validar">
 
-    <!--<label>Ejemplar:</label>
-    <select class="form-control mb-5" name="categoria">
-        {{#ejemplar}}
-        <option value="{{id}}">{{nombre}}</option>
-        {{/ejemplar}}
-    </select>-->
-
     <div class="form-group">
         <label>Titulo:</label>
         <input type="text" name="titulo" id="" placeholder="Titulo" class="form-control" required>
@@ -35,12 +28,12 @@
 
     <div class="form-group">
         <label>Link de :</label>
-        <input type="text" name="link" id="" placeholder="www.f.com" class="form-control" required>
+        <input type="text" name="link" id="" placeholder="www.f.com" class="form-control">
     </div>
 
     <div class="form-group">
         <label>Video:</label>
-        <input type="text" name="video"  placeholder="Olé" class="form-control" required>
+        <input type="text" name="video"  placeholder="Olé" class="form-control">
     </div>
 
     <div class="form-group">
