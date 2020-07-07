@@ -148,9 +148,13 @@ class EjemplarController
     }
 
     public function pagarSuscripcion(){
-        $id = $_POST["id"];
-        $data['data']=$id;
-        echo $this->renderer->render("view/pagarSuscripcion.php",$data);
+        if(isset($_SESSION['name']) && isset($_POST['id'])){
+            $id = $_POST["id"];
+            $data['data']=$id;
+            echo $this->renderer->render("view/pagarSuscripcion.php",$data);
+        }else{
+            header("Location: /usuario/index");
+        }
     }
     public function procesarPagoEjemplar(){
         $idEjemplar = $_POST["idEjemplar"];
@@ -171,8 +175,6 @@ class EjemplarController
             $data['data']=$idEjemplar;
             echo $this->renderer->render("view/pagarSuscripcion.php", $data);
         }
-
-
     }
     public function validarTarjeta($numeroTajerta,$cvv,$mes,$anio){
         if(strlen($numeroTajerta)!=16){
@@ -181,7 +183,7 @@ class EjemplarController
         if(strlen($cvv)!=3){
             throw new Exception("Ingrese una tarjeta valida");
         }
-        if($mes==date("m")&&$anio==("Y")){
+        if($mes==date("m")&&$anio==date("Y")){
             throw new Exception("Ingrese una tarjeta valida");
         }
 
