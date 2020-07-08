@@ -123,6 +123,15 @@ class NoticiaModel
             where uc.id_usuario= '$id' and n.id='$id_noticia');");
     }
 
+    public function obtenerNoticiasConSeccionYUsuario(){
+        return $this->connexion->query("
+            select n.id as id, n.titulo,s.nombre as seccion,u.nombre as usuario,n.estado as estado from noticia as n
+            inner join seccion as s 
+            on s.id=n.id_seccion
+            inner join usuario as u 
+            on u.id=n.id_usuario
+        ");
+    }
 
 
 }

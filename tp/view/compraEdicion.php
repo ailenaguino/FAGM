@@ -35,8 +35,7 @@
                                                 </span></label>
                                             <div class="input-group">
                                                 <input type="number" placeholder="MM" name="mes" class="form-control" required>
-                                                <input type="number" placeholder="AAAA" name="anio" class="form-control" required>
-                                                <input type="number" min="2020" max="2060" step="1" placeholder="AAAA" name="anio" class="form-control" required>
+                                                    <input type="number" min="2020" max="2060" step="1" placeholder="AAAA" name="anio" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>

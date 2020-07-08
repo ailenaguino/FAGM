@@ -7,15 +7,14 @@
     <table class="table table-bordered">
         <thead class="thead-dark">
         <tr>
-            <th class="text-center" scope="col">Id</th>
             <th class="text-center" scope="col">Nombre</th>
             <th class="text-center" scope="col">Estado</th>
+            <th class="text-center" scope="col">Editar</th>
         </tr>
         </thead>
         <tbody>
         {{#secciones}}
         <tr>
-            <td class="text-center">{{id}}</td>
             <td class="text-center">{{nombre}}</td>
             <td class="text-center">
                 <form action="/seccion/cambiarEstado" method="POST">
@@ -29,6 +28,10 @@
                     {{/estado}}
                 </form>
             </td>
+            <form method="post" action="/seccion/editar">
+                <input type="hidden" name="id" value="{{id}}">
+                <td class="text-center"><button type="submit" class="btn btn-outline-primary mb-3">Editar</button></td>
+            </form>
         </tr>
         {{/secciones}}
         </tbody>

@@ -11,9 +11,7 @@
     <table class="table table-bordered my-5" >
         <thead>
         <tr>
-            <th>Id</th>
             <th>Nombre</th>
-            <th>Id rol</th>
             <th>Rol</th>
         </tr>
         </thead>
@@ -21,9 +19,7 @@
         <tbody>
             {{#usuarios}}
             <tr>
-                <td>{{id}}</td>
                 <td>{{nombre}}</td>
-                <td>{{rol}}</td>
                 <td>
                     {{#rol}}
                     <form method="POST" action="/usuario/actualizarRol">
