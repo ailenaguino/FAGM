@@ -28,12 +28,17 @@ class EjemplarModel
     }
 
     public function obtenerEjemplaresConSusCategorias(){
-        return $this->connexion->query("select  ejemplar.nombre as ejemplar,categoria.nombre as categoria, ejemplar.precio, ejemplar.id from ejemplar
+        return $this->connexion->query("select  ejemplar.nombre as ejemplar,categoria.nombre as categoria, ejemplar.precio, ejemplar.id,ejemplar.estado from ejemplar
         inner join categoria
         on categoria.id = ejemplar.id_categoria
         where ejemplar.estado = '1'");
     }
-
+    public function obtenerEjemplaresConCategoria(){
+        return $this->connexion->query("select  ejemplar.nombre as ejemplar,categoria.nombre as categoria, ejemplar.precio, ejemplar.id,ejemplar.estado from ejemplar
+        inner join categoria
+        on categoria.id = ejemplar.id_categoria
+       ");
+    }
     public function obtenerEjemplarPorId($id){
         return $this->connexion->query("select * from ejemplar where id = '$id'");
     }

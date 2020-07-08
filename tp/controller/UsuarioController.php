@@ -313,7 +313,8 @@ class UsuarioController
                 $this->pdf->SetFont('Arial', '', 13);
                 foreach ($result as $v) {
                     $this->pdf->ln();
-                    $this->pdf->Cell(40, 10, "Ejemplar: " . $v["ejemplar"]);
+
+                    $this->pdf->Cell(40, 10, "Ejemplar: " . utf8_decode($v["ejemplar"]));
                     $this->pdf->ln();
                     $this->pdf->Cell(40, 10, "Suscripciones totales: " . $v["total"]);
                     $this->pdf->ln();
@@ -351,17 +352,17 @@ class UsuarioController
                 $this->pdf->SetFont('Arial', '', 13);
                 foreach ($result as $v) {
                     $this->pdf->ln();
-                    $this->pdf->Cell(40, 10, "Nombre: " . $v["nombre"]);
+                    $this->pdf->Cell(40, 10, "Nombre: " . utf8_decode($v["nombre"]));
                     $this->pdf->ln();
-                    $this->pdf->Cell(40, 10, "Nombre de usuario: " . $v["nombre_usuario"]);
+                    $this->pdf->Cell(40, 10, "Nombre de usuario: " . utf8_decode($v["nombre_usuario"]));
                     $this->pdf->ln();
                     $this->pdf->Cell(40, 10, "Fecha de nacimiento: " . $v["fecha_nacimiento"]);
                     $this->pdf->ln();
-                    $this->pdf->Cell(40, 10, "Email: " . $v["email"]);
+                    $this->pdf->Cell(40, 10, "Email: " . utf8_decode($v["email"]));
                     $this->pdf->ln();
                     $this->pdf->Cell(40, 10, "Telefono: " . $v["telefono"]);
                     $this->pdf->ln();
-                    $this->pdf->Cell(40, 10, "Ubicacion: " . $v["ubicacion"]);
+                    $this->pdf->Cell(40, 10, "Ubicacion: " . utf8_decode($v["ubicacion"]));
                     $this->pdf->ln();
                 }
                 $this->pdf->Output();
@@ -389,13 +390,13 @@ class UsuarioController
                 $this->pdf->SetFont('Arial', '', 13);
                 foreach ($result as $v) {
                     $this->pdf->ln();
-                    $this->pdf->Cell(40, 10, "Nombre: " . $v["usuario"]);
+                    $this->pdf->Cell(40, 10, utf8_decode("Nombre: " . $v["usuario"]));
                     $this->pdf->ln();
-                    $this->pdf->Cell(40, 10, "Edicion: " . $v["nombre_edicion"]);
+                    $this->pdf->Cell(40, 10, utf8_decode("Edicion: " . $v["nombre_edicion"]));
                     $this->pdf->ln();
                     $this->pdf->Cell(40, 10, "Edicion numero: " . $v["edicion"]);
                     $this->pdf->ln();
-                    $this->pdf->Cell(40, 10, "Ejemplar: " . $v["ejemplar"]);
+                    $this->pdf->Cell(40, 10, utf8_decode("Ejemplar: " . $v["ejemplar"]));
                     $this->pdf->ln();
                 }
                 $this->pdf->Output();
@@ -444,7 +445,7 @@ class UsuarioController
                 $this->pdf->ln();
 
                 $this->pdf->SetFont('Arial', '', 13);
-                $this->pdf->Cell(50, 10, "Nombre: " . $nombre . " | Telefono: " . $telefono, 0, 1, "L");
+                $this->pdf->Cell(50, 10, utf8_decode("Nombre: " . $nombre . " | Telefono: " . $telefono), 0, 1, "L");
 
                 $this->pdf->ln();
 
@@ -455,7 +456,7 @@ class UsuarioController
                 $this->pdf->SetFont('Arial', '', 13);
 
                 foreach ($result as $v) {
-                    $this->pdf->Cell(40, 10, "Ejemplar: " . $v["ejemplar"]);
+                    $this->pdf->Cell(40, 10, utf8_decode("Ejemplar: " . $v["ejemplar"]));
                     $this->pdf->ln();
                     $this->pdf->Cell(40, 10, "Fecha de suscripcion: " . $v["fecha"]);
                     $this->pdf->ln();
@@ -475,8 +476,7 @@ class UsuarioController
         }
     }
 
-    public function generarResumenDeCompras()
-    {
+    public function generarResumenDeCompras(){
         if ($this->validarPermisosDeUsuario()) {
             $name = $_SESSION['name'];
             $result = $this->model->obtenerCompras($_SESSION['name']);
@@ -492,7 +492,7 @@ class UsuarioController
                 $this->pdf->ln();
 
                 $this->pdf->SetFont('Arial', '', 13);
-                $this->pdf->Cell(50, 10, "Nombre de usuario: " . $nombre, 0, 1, "L");
+                $this->pdf->Cell(50, 10,"Nombre de usuario: " . utf8_decode( $nombre), 0, 1, "L");
 
                 $this->pdf->ln();
 
@@ -502,10 +502,10 @@ class UsuarioController
                 $this->pdf->ln();
                 $this->pdf->SetFont('Arial', '', 13);
 
-                foreach ($result as $v) {
-                    $this->pdf->Cell(40, 10, "Ejemplar: " . $v["ejemplar"]);
+                foreach ($result as $v){
+                    $this->pdf->Cell(40, 10, "Ejemplar: " . utf8_decode($v["ejemplar"]));
                     $this->pdf->ln();
-                    $this->pdf->Cell(40, 10, "Edicion: " . $v["edicion"]);
+                    $this->pdf->Cell(40, 10,"Edicion: " . utf8_decode( $v["edicion"]));
                     $this->pdf->ln();
                     $this->pdf->Cell(40, 10, "Numero de edicion: " . $v["numero"]);
                     $this->pdf->ln();

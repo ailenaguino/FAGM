@@ -112,11 +112,11 @@ class EdicionController
     }
 
     public function listaAdmin(){
-        $data["ediciones"] = $this->model->obtenerEdiciones();
+        $data["ediciones"] = $this->model->obtenerEdicionConNombreEjemplar();
         echo $this->renderer->render("view/listaEdicionesAdmin.php", $data);
     }
     public function listaConte(){
-        $data["ediciones"] = $this->model->obtenerEdiciones();
+        $data["ediciones"] = $this->model->obtenerEdicionConNombreEjemplar();
         echo $this->renderer->render("view/listaEdicionesConte.php", $data);
     }
     public function cambiarEstado()
@@ -129,7 +129,7 @@ class EdicionController
             $estado = 1;
         }
         $this->model->cambiarEstado($id, $estado);
-        $data["ediciones"] = $this->model->obtenerEdiciones();
+        $data["ediciones"] = $this->model->obtenerEdicionConNombreEjemplar();
         echo $this->renderer->render("view/listaEdicionesAdmin.php", $data);
     }
 

@@ -19,6 +19,13 @@ class EdicionModel
                                         on e.id_ejemplar = ej.id
                                         where e.estado = '1'");
     }
+    public function obtenerEdicionConNombreEjemplar(){
+        return $this->connexion->query("select e.nombre as nombre,e.id, e.numero, e.precio,e.estado, ej.nombre as ejemplar 
+                                        from edicion as e 
+                                        inner join ejemplar as ej
+                                        on e.id_ejemplar = ej.id
+                                        ");
+    }
 
     public function obtenerEdicionesDeEjemplar($id){
         return $this->connexion->query("SELECT numero,edicion.nombre,edicion.id FROM edicion inner join ejemplar on '$id'= edicion.id_ejemplar group by id");

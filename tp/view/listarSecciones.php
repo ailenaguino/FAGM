@@ -2,7 +2,6 @@
 <table class="table my-5">
     <thead class="thead-dark">
     <tr>
-        <th scope="col">ID</th>
         <th scope="col">Nombre</th>
         <th scope="col">Estado</th>
         <th scope="col">Acciones</th>
@@ -11,9 +10,7 @@
     <tbody>
     {{#secciones}}
     <tr>
-        <th scope="row">{{id}}</th>
-        <td>{{nombre}}</td>   
-       
+        <td>{{nombre}}</td>
         {{#estado}}
             <td>activo</td>
         {{/estado}}

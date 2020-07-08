@@ -7,20 +7,19 @@
     <table class="table table-bordered">
         <thead class="thead-dark">
         <tr>
-            <th class="text-center" scope="col">Id</th>
             <th class="text-center" scope="col">Nombre</th>
             <th class="text-center" scope="col">Numero</th>
-            <th class="text-center" scope="col">Id ejemplar</th>
+            <th class="text-center" scope="col">ejemplar</th>
             <th class="text-center" scope="col">Estado</th>
+            <th class="text-center" scope="col">Editar</th>
         </tr>
         </thead>
         <tbody>
         {{#ediciones}}
         <tr>
-            <td class="text-center">{{id}}</td>
             <td class="text-center">{{nombre}}</td>
             <th class="text-center">{{numero}}</th>
-            <td class="text-center">{{id_ejemplar}}</td>
+            <td class="text-center">{{ejemplar}}</td>
             <td class="text-center">
                 <form action="/edicion/cambiarEstado" method="POST">
                     <input type="hidden" name="estado" value="{{estado}}">
@@ -33,6 +32,10 @@
                     {{/estado}}
                 </form>
             </td>
+            <form method="post" action="/edicion/editar">
+                <input type="hidden" name="id" value="{{id}}">
+                <td class="text-center"><button type="submit" class="btn btn-outline-primary mb-3">Editar</button></td>
+            </form>
         </tr>
         {{/ediciones}}
         </tbody>

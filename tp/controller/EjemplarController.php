@@ -78,11 +78,11 @@ class EjemplarController
     }
 
     public function listaAdmin(){
-        $data["ejemplares"] = $this->model->obtenerEjemplares();
+        $data["ejemplares"] = $this->model->obtenerEjemplaresConCategoria();
         echo $this->renderer->render("view/listaEjemplaresAdmin.php", $data);
     }
     public function listaConte(){
-        $data["ejemplares"] = $this->model->obtenerEjemplares();
+        $data["ejemplares"] = $this->model->obtenerEjemplaresConCategoria();
         echo $this->renderer->render("view/listaEjemplaresConte.php", $data);
     }
     public function cambiarEstado()
@@ -95,7 +95,7 @@ class EjemplarController
             $estado = 1;
         }
         $this->model->cambiarEstado($id, $estado);
-        $data["ejemplares"] = $this->model->obtenerEjemplares();
+        $data["ejemplares"] = $this->model->obtenerEjemplaresConCategoria();
         echo $this->renderer->render("view/listaEjemplaresAdmin.php", $data);
     }
 

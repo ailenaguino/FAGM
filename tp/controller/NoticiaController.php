@@ -57,11 +57,11 @@ class NoticiaController
     }
 
     public function listaAdmin(){
-        $data["noticias"] = $this->model->obtenerNoticias();
+        $data["noticias"] = $this->model->obtenerNoticiasConSeccionYUsuario();
         echo $this->renderer->render( "view/listaNoticiasAdmin.php", $data);
     }
     public function listaConte(){
-        $data["noticias"] = $this->model->obtenerNoticias();
+        $data["noticias"] = $this->model->obtenerNoticiasConSeccionYUsuario();
         echo $this->renderer->render( "view/listaNoticiasConte.php", $data);
     }
     public function cambiarEstado(){
@@ -73,7 +73,7 @@ class NoticiaController
             $estado=1;
         }
         $this->model->cambiarEstado($id,$estado);
-        $data["noticias"] = $this->model->obtenerNoticias();
+        $data["noticias"] = $this->model->obtenerNoticiasConSeccionYUsuario();
         echo $this->renderer->render( "view/listaNoticiasAdmin.php", $data);
     }
 

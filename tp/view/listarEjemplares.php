@@ -2,7 +2,6 @@
 <table class="table my-5">
     <thead class="thead-dark">
     <tr>
-        <th scope="col">ID</th>
         <th scope="col">Nombre</th>
         <th scope="col">Precio</th>
         <th scope="col">Categoría</th>
@@ -13,7 +12,6 @@
     <tbody>
     {{#ejemplares}}
     <tr>
-        <th scope="row">{{id}}</th>
         <td>{{nombre}}</td>
         <td>${{precio}}</td>
         <td>{{id_categoria}}</td>
