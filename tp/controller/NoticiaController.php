@@ -169,8 +169,6 @@ class NoticiaController
 
                 }
             }
-
-
     }
 
 }
